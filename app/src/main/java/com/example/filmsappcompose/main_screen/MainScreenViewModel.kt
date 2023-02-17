@@ -1,142 +1,36 @@
 package com.example.filmsappcompose.main_screen
 
-import androidx.compose.runtime.mutableStateOf
-
-import com.example.filmsappcompose.main_screen.domain.Film
+import android.app.Application
+import android.content.Context
+import android.util.Log
 import androidx.compose.runtime.State
-import androidx.lifecycle.ViewModel
+import androidx.compose.runtime.mutableStateOf
+import androidx.lifecycle.AndroidViewModel
+import com.example.filmsappcompose.main_screen.domain.Film
+import com.google.gson.Gson
 
-class MainScreenViewModel : ViewModel() {
+class MainScreenViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val fakeFilms = mutableListOf(
-        Film(
-            0,
-            "Гнев человеческий ",
-            "https://yandex.ru/images/search?text=Кукушка&nl=1&source=morda&pos=1&rpt=simage&img_url=http%3A%2F%2Fplacepic.ru%2Fwp-content%2Fuploads%2F2018%2F11%2F2-584.jpg&lr=10322",
-            1675209600,
-            1,
-            "Эйч — загадочный и холодный на вид джентльмен, но внутри него пылает жажда справедливости. Преследуя...",
-            1
-        ),
-        Film(
-            1,
-            "Гнев человеческий ",
-            "https://ru.wikipedia.org/wiki/Аватар:_Путь_воды#/media/Файл:Аватар_Путь_воды_постер.jpg",
-            1675209600,
-            2,
-            "Эйч — загадочный и холодный на вид джентльмен, но внутри него пылает жажда справедливости. Преследуя...",
-            2
-        ),
-        Film(
-            2,
-            "Гнев человеческий ",
-            "https://ru.wikipedia.org/wiki/Аватар:_Путь_воды#/media/Файл:Аватар_Путь_воды_постер.jpg",
-            1675209600,
-            3,
-            "Эйч — загадочный и холодный на вид джентльмен, но внутри него пылает жажда справедливости. Преследуя...",
-            3
-        ),
-        Film(
-            3,
-            "Гнев человеческий ",
-            "https://ru.wikipedia.org/wiki/Аватар:_Путь_воды#/media/Файл:Аватар_Путь_воды_постер.jpg",
-            1675209600,
-            4,
-            "Эйч — загадочный и холодный на вид джентльмен, но внутри него пылает жажда справедливости. Преследуя...",
-            4
-        ),
-        Film(
-            4,
-            "Гнев человеческий ",
-            "https://ru.wikipedia.org/wiki/Аватар:_Путь_воды#/media/Файл:Аватар_Путь_воды_постер.jpg",
-            1675209600,
-            5,
-            "Эйч — загадочный и холодный на вид джентльмен, но внутри него пылает жажда справедливости. Преследуя...",
-            5
-        ),
-        Film(
-            5,
-            "Гнев человеческий ",
-            "https://ru.wikipedia.org/wiki/Аватар:_Путь_воды#/media/Файл:Аватар_Путь_воды_постер.jpg",
-            1675209600,
-            1,
-            "Эйч — загадочный и холодный на вид джентльмен, но внутри него пылает жажда справедливости. Преследуя...",
-            1
-        ),
-        Film(
-            6,
-            "Гнев человеческий ",
-            "https://ru.wikipedia.org/wiki/Аватар:_Путь_воды#/media/Файл:Аватар_Путь_воды_постер.jpg",
-            1675209600,
-            2,
-            "Эйч — загадочный и холодный на вид джентльмен, но внутри него пылает жажда справедливости. Преследуя...",
-            2
-        ),
-        Film(
-            7,
-            "Гнев человеческий ",
-            "https://ru.wikipedia.org/wiki/Аватар:_Путь_воды#/media/Файл:Аватар_Путь_воды_постер.jpg",
-            1675209600,
-            3,
-            "Эйч — загадочный и холодный на вид джентльмен, но внутри него пылает жажда справедливости. Преследуя...",
-            3
-        ),
-        Film(
-            8,
-            "Гнев человеческий ",
-            "https://ru.wikipedia.org/wiki/Аватар:_Путь_воды#/media/Файл:Аватар_Путь_воды_постер.jpg",
-            1675209600,
-            4,
-            "Эйч — загадочный и холодный на вид джентльмен, но внутри него пылает жажда справедливости. Преследуя...",
-            4
-        ),
-        Film(
-            9,
-            "Гнев человеческий ",
-            "https://ru.wikipedia.org/wiki/Аватар:_Путь_воды#/media/Файл:Аватар_Путь_воды_постер.jpg",
-            1675209600,
-            5,
-            "Эйч — загадочный и холодный на вид джентльмен, но внутри него пылает жажда справедливости. Преследуя...",
-            5
-        ),
-        Film(
-            10,
-            "Гнев человеческий ",
-            "https://ru.wikipedia.org/wiki/Аватар:_Путь_воды#/media/Файл:Аватар_Путь_воды_постер.jpg",
-            1675209600,
-            5,
-            "Эйч — загадочный и холодный на вид джентльмен, но внутри него пылает жажда справедливости. Преследуя...",
-            5
-        ),
-        Film(
-            11,
-            "Гнев человеческий ",
-            "https://ru.wikipedia.org/wiki/Аватар:_Путь_воды#/media/Файл:Аватар_Путь_воды_постер.jpg",
-            1675209600,
-            5,
-            "Эйч — загадочный и холодный на вид джентльмен, но внутри него пылает жажда справедливости. Преследуя...",
-            5
-        ),
-        Film(
-            12,
-            "Гнев человеческий ",
-            "https://ru.wikipedia.org/wiki/Аватар:_Путь_воды#/media/Файл:Аватар_Путь_воды_постер.jpg",
-            1675209600,
-            5,
-            "Эйч — загадочный и холодный на вид джентльмен, но внутри него пылает жажда справедливости. Преследуя...",
-            5
-        ),
-        Film(
-            13,
-            "Гнев человеческий ",
-            "https://ru.wikipedia.org/wiki/Аватар:_Путь_воды#/media/Файл:Аватар_Путь_воды_постер.jpg",
-            1675209600,
-            5,
-            "Эйч — загадочный и холодный на вид джентльмен, но внутри него пылает жажда справедливости. Преследуя...",
-            5
-        ),
+    private val _films = mutableStateOf(
+        Gson().fromJson(
+            loadJsonFromAssets(application),
+            Array<Film>::class.java
+        ).toList()
     )
-
-    private val _films = mutableStateOf<List<Film>>(fakeFilms)
     val films: State<List<Film>> = _films
+
+    private fun loadJsonFromAssets(context: Context): String {
+        var result = ""
+        runCatching {
+            val input = context.assets.open("films.json")
+            val size = input.available()
+            val bytes = ByteArray(size)
+            input.read(bytes)
+            input.close()
+            result = String(bytes)
+        }.onFailure {
+            Log.e("loadJsonFromAssets", "loadJsonFromAssets: ${it.message} ")
+        }
+        return result
+    }
 }
