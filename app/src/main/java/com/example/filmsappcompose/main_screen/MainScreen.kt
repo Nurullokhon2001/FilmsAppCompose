@@ -45,7 +45,6 @@ fun MainScreen(navController: NavHostController, mainScreenViewModel: MainScreen
                 vertical = 18.dp
             ),
             horizontalArrangement = Arrangement.spacedBy(16.dp),
-            userScrollEnabled = false,
         ) {
             items(mainScreenViewModel.categories.value) {
                 CategoriesItem(category = it, onclick = { category ->
