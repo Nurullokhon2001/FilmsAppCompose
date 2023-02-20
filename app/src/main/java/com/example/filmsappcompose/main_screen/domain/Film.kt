@@ -7,5 +7,6 @@ data class Film(
     val date_publication: Long,
     val rating: Byte?,
     val description: String,
+    val age: String,
     val category: Int
 )

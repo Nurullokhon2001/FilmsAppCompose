@@ -19,6 +19,10 @@ class MainScreenViewModel(application: Application) : AndroidViewModel(applicati
     )
     val films: State<List<Film>> = _films
 
+    private val _categories =
+        mutableStateOf(listOf("боевики", "драмы", "комедии", "артхаус", "мелодрамы", "комедии"))
+    val categories: State<List<String>> = _categories
+
     private fun loadJsonFromAssets(context: Context): String {
         var result = ""
         runCatching {
