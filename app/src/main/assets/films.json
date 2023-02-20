@@ -1,0 +1,56 @@
+[
+        {
+            "id": 0,
+            "name": "Гнев человеческий 1",
+            "image": "https://yandex.ru/images/search?text=Кукушка&nl=1&source=morda&pos=1&rpt=simage&img_url=http%3A%2F%2Fplacepic.ru%2Fwp-content%2Fuploads%2F2018%2F11%2F2-584.jpg&lr=10322",
+            "date_publication": 1675209600,
+            "rating": 0,
+            "description": "Эйч — загадочный и холодный на вид джентльмен, но внутри него пылает жажда справедливости. Преследуя...",
+            "category": 1
+        },
+        {
+            "id": 1,
+            "name": "Гнев человеческий 2",
+            "image": "https://yandex.ru/images/search?text=Кукушка&nl=1&source=morda&pos=1&rpt=simage&img_url=http%3A%2F%2Fplacepic.ru%2Fwp-content%2Fuploads%2F2018%2F11%2F2-584.jpg&lr=10322",
+            "date_publication": 1675209600,
+            "rating": 1,
+            "description": "Эйч — загадочный и холодный на вид джентльмен, но внутри него пылает жажда справедливости. Преследуя...",
+            "category": 2
+        },
+        {
+            "id": 2,
+            "name": "Гнев человеческий 3",
+            "image": "https://yandex.ru/images/search?text=Кукушка&nl=1&source=morda&pos=1&rpt=simage&img_url=http%3A%2F%2Fplacepic.ru%2Fwp-content%2Fuploads%2F2018%2F11%2F2-584.jpg&lr=10322",
+            "date_publication": 1675209600,
+            "rating": 2,
+            "description": "Эйч — загадочный и холодный на вид джентльмен, но внутри него пылает жажда справедливости. Преследуя...",
+            "category": 2
+        },
+        {
+            "id": 3,
+            "name": "Гнев человеческий 4",
+            "image": "https://yandex.ru/images/search?text=Кукушка&nl=1&source=morda&pos=1&rpt=simage&img_url=http%3A%2F%2Fplacepic.ru%2Fwp-content%2Fuploads%2F2018%2F11%2F2-584.jpg&lr=10322",
+            "date_publication": 1675209600,
+            "rating": 3,
+            "description": "Эйч — загадочный и холодный на вид джентльмен, но внутри него пылает жажда справедливости. Преследуя...",
+            "category": 3
+        },
+        {
+            "id": 4,
+            "name": "Гнев человеческий 5",
+            "image": "https://yandex.ru/images/search?text=Кукушка&nl=1&source=morda&pos=1&rpt=simage&img_url=http%3A%2F%2Fplacepic.ru%2Fwp-content%2Fuploads%2F2018%2F11%2F2-584.jpg&lr=10322",
+            "date_publication": 1675209600,
+            "rating": 4,
+            "description": "Эйч — загадочный и холодный на вид джентльмен, но внутри него пылает жажда справедливости. Преследуя...",
+            "category": 4
+        },
+        {
+            "id": 5,
+            "name": "Гнев человеческий 6",
+            "image": "https://yandex.ru/images/search?text=Кукушка&nl=1&source=morda&pos=1&rpt=simage&img_url=http%3A%2F%2Fplacepic.ru%2Fwp-content%2Fuploads%2F2018%2F11%2F2-584.jpg&lr=10322",
+            "date_publication": 1675209600,
+            "rating": 5,
+            "description": "Эйч — загадочный и холодный на вид джентльмен, но внутри него пылает жажда справедливости. Преследуя...",
+            "category": 5
+        }
+    ]
