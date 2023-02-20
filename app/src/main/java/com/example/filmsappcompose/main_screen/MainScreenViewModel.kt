@@ -10,7 +10,7 @@ class MainScreenViewModel : ViewModel() {
 
     private val fakeFilms = mutableListOf(
         Film(
-            1,
+            0,
             "Гнев человеческий ",
             "https://yandex.ru/images/search?text=Кукушка&nl=1&source=morda&pos=1&rpt=simage&img_url=http%3A%2F%2Fplacepic.ru%2Fwp-content%2Fuploads%2F2018%2F11%2F2-584.jpg&lr=10322",
             1675209600,
@@ -19,7 +19,7 @@ class MainScreenViewModel : ViewModel() {
             1
         ),
         Film(
-            2,
+            1,
             "Гнев человеческий ",
             "https://ru.wikipedia.org/wiki/Аватар:_Путь_воды#/media/Файл:Аватар_Путь_воды_постер.jpg",
             1675209600,
@@ -28,7 +28,7 @@ class MainScreenViewModel : ViewModel() {
             2
         ),
         Film(
-            3,
+            2,
             "Гнев человеческий ",
             "https://ru.wikipedia.org/wiki/Аватар:_Путь_воды#/media/Файл:Аватар_Путь_воды_постер.jpg",
             1675209600,
@@ -37,7 +37,7 @@ class MainScreenViewModel : ViewModel() {
             3
         ),
         Film(
-            4,
+            3,
             "Гнев человеческий ",
             "https://ru.wikipedia.org/wiki/Аватар:_Путь_воды#/media/Файл:Аватар_Путь_воды_постер.jpg",
             1675209600,
@@ -46,7 +46,7 @@ class MainScreenViewModel : ViewModel() {
             4
         ),
         Film(
-            5,
+            4,
             "Гнев человеческий ",
             "https://ru.wikipedia.org/wiki/Аватар:_Путь_воды#/media/Файл:Аватар_Путь_воды_постер.jpg",
             1675209600,
@@ -55,7 +55,7 @@ class MainScreenViewModel : ViewModel() {
             5
         ),
         Film(
-            1,
+            5,
             "Гнев человеческий ",
             "https://ru.wikipedia.org/wiki/Аватар:_Путь_воды#/media/Файл:Аватар_Путь_воды_постер.jpg",
             1675209600,
@@ -64,7 +64,7 @@ class MainScreenViewModel : ViewModel() {
             1
         ),
         Film(
-            2,
+            6,
             "Гнев человеческий ",
             "https://ru.wikipedia.org/wiki/Аватар:_Путь_воды#/media/Файл:Аватар_Путь_воды_постер.jpg",
             1675209600,
@@ -73,7 +73,7 @@ class MainScreenViewModel : ViewModel() {
             2
         ),
         Film(
-            3,
+            7,
             "Гнев человеческий ",
             "https://ru.wikipedia.org/wiki/Аватар:_Путь_воды#/media/Файл:Аватар_Путь_воды_постер.jpg",
             1675209600,
@@ -82,7 +82,7 @@ class MainScreenViewModel : ViewModel() {
             3
         ),
         Film(
-            4,
+            8,
             "Гнев человеческий ",
             "https://ru.wikipedia.org/wiki/Аватар:_Путь_воды#/media/Файл:Аватар_Путь_воды_постер.jpg",
             1675209600,
@@ -91,7 +91,7 @@ class MainScreenViewModel : ViewModel() {
             4
         ),
         Film(
-            5,
+            9,
             "Гнев человеческий ",
             "https://ru.wikipedia.org/wiki/Аватар:_Путь_воды#/media/Файл:Аватар_Путь_воды_постер.jpg",
             1675209600,
@@ -100,7 +100,7 @@ class MainScreenViewModel : ViewModel() {
             5
         ),
         Film(
-            5,
+            10,
             "Гнев человеческий ",
             "https://ru.wikipedia.org/wiki/Аватар:_Путь_воды#/media/Файл:Аватар_Путь_воды_постер.jpg",
             1675209600,
@@ -109,7 +109,7 @@ class MainScreenViewModel : ViewModel() {
             5
         ),
         Film(
-            5,
+            11,
             "Гнев человеческий ",
             "https://ru.wikipedia.org/wiki/Аватар:_Путь_воды#/media/Файл:Аватар_Путь_воды_постер.jpg",
             1675209600,
@@ -118,7 +118,7 @@ class MainScreenViewModel : ViewModel() {
             5
         ),
         Film(
-            5,
+            12,
             "Гнев человеческий ",
             "https://ru.wikipedia.org/wiki/Аватар:_Путь_воды#/media/Файл:Аватар_Путь_воды_постер.jpg",
             1675209600,
@@ -127,7 +127,7 @@ class MainScreenViewModel : ViewModel() {
             5
         ),
         Film(
-            5,
+            13,
             "Гнев человеческий ",
             "https://ru.wikipedia.org/wiki/Аватар:_Путь_воды#/media/Файл:Аватар_Путь_воды_постер.jpg",
             1675209600,

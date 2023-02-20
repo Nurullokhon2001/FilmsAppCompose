@@ -15,7 +15,7 @@ fun MainScreen(navController: NavHostController, mainScreenViewModel: MainScreen
     val films = remember { mutableStateOf(mainScreenViewModel.films.value) }
     LazyVerticalGrid(columns = GridCells.Fixed(2)) {
         items(films.value) { movie ->
-            FilmCard(film = movie)
+            FilmCard(film = movie,navController)
         }
     }
 }
