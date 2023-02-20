@@ -7,7 +7,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.filmsappcompose.main_screen.MainScreenViewModel
-import com.example.filmsappcompose.ui.main_components.CustomRatingBar
+import com.example.filmsappcompose.ui.main_components.CustomRatingView
 import com.example.filmsappcompose.utiils.convertLongToTime
 
 @Composable
@@ -23,6 +23,6 @@ fun DetailsScreen(
             modifier = Modifier.padding(0.dp, 10.dp)
         )
         Text(text = film.description, modifier = Modifier.padding(0.dp, 10.dp))
-        CustomRatingBar(film.rating)
+        CustomRatingView(modifier = Modifier, film.rating ?: 0f, 3.dp)
     }
 }

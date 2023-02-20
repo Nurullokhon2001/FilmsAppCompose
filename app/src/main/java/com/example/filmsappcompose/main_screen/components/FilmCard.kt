@@ -20,7 +20,7 @@ import androidx.navigation.NavHostController
 import com.example.filmsappcompose.R
 import com.example.filmsappcompose.main_screen.domain.Film
 import com.example.filmsappcompose.ui.main_components.AgeBar
-import com.example.filmsappcompose.ui.main_components.CustomRatingBar
+import com.example.filmsappcompose.ui.main_components.CustomRatingView
 import com.example.filmsappcompose.ui.navigation.Routes
 
 @Composable
@@ -31,7 +31,7 @@ fun FilmCard(film: Film, navController: NavHostController) {
             .fillMaxSize()
             .background(Color.Transparent)
             .clickable {
-                navController.navigate(route = "${Routes.DetailsScreen.routes}/" + film.id)
+                navController.navigate(route = "${Routes.DetailsScreen.routes}/${film.id}")
             }
     ) {
         Card(
@@ -68,7 +68,7 @@ fun FilmCard(film: Film, navController: NavHostController) {
                         .fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceBetween
                 ) {
-                    CustomRatingBar(film.rating)
+                    CustomRatingView(modifier = Modifier, film.rating ?: 0f, 3.dp)
                     AgeBar(film.age)
                 }
             }
