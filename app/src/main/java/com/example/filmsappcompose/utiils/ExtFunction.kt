@@ -30,7 +30,7 @@ fun Context.loadJsonFromAssets(): String {
     return result
 }
 
-fun Context.toList(): List<Film> {
+fun Context.getMokData(): List<Film> {
     return Gson().fromJson(
         this.loadJsonFromAssets(),
         Array<Film>::class.java
