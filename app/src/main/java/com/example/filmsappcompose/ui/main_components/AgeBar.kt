@@ -12,17 +12,18 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun AgeBar(category: String) {
+fun AgeBar(age: String, radius: Float = 30f) {
     Text(
-        text = category,
+        text = age,
         fontSize = 8.sp,
+        color = Color.Black,
         textAlign = TextAlign.Center,
         modifier = Modifier
             .padding(5.dp)
             .drawBehind {
                 drawCircle(
                     Color.Black,
-                    radius = 30f,
+                    radius = radius,
                     style = Stroke(
                         width = 2f
                     )

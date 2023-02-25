@@ -1,17 +1,37 @@
 package com.example.filmsappcompose.details_screen
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.BottomSheetScaffold
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.example.filmsappcompose.R
 import com.example.filmsappcompose.main_screen.MainScreenViewModel
+import com.example.filmsappcompose.main_screen.domain.Actor
+import com.example.filmsappcompose.ui.main_components.AgeBar
+import com.example.filmsappcompose.ui.main_components.CategoriesItem
 import com.example.filmsappcompose.ui.main_components.CustomRatingView
 import com.example.filmsappcompose.utiils.Resource
 import com.example.filmsappcompose.utiils.convertLongToTime
 
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun DetailsScreen(
     mainScreenViewModel: MainScreenViewModel,
@@ -19,13 +39,99 @@ fun DetailsScreen(
 ) {
     val state = mainScreenViewModel.films.collectAsState()
     val film = (state.value as Resource.Success).data[filmId]
-    Column {
-        Text(text = film.name, modifier = Modifier.padding(0.dp, 10.dp))
-        Text(
-            text = film.date_publication.convertLongToTime(),
-            modifier = Modifier.padding(0.dp, 10.dp)
+    val configuration = LocalConfiguration.current
+
+    BottomSheetScaffold(
+        sheetShape = RoundedCornerShape(topStart = 20.dp, topEnd = 16.dp),
+        sheetPeekHeight = configuration.screenHeightDp.dp - (configuration.screenHeightDp.dp / 3),
+        sheetContent = {
+            Column(
+                verticalArrangement = Arrangement.Bottom,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .verticalScroll(rememberScrollState())
+            ) {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(top = 30.dp, start = 20.dp, end = 20.dp),
+                ) {
+                    CategoriesItem(category = "боевики", onclick = {})
+                    Text(
+                        text = film.date_publication.convertLongToTime(),
+                        Modifier
+                            .padding(start = 8.dp)
+                            .align(Alignment.CenterVertically),
+                        fontSize = 12.sp,
+                        color = Color.Black
+                    )
+                }
+                Row(
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(start = 20.dp, end = 20.dp, bottom = 8.dp),
+                ) {
+                    Text(
+                        text = film.name,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 20.sp,
+                        modifier = Modifier
+                            .padding(bottom = 8.dp, top = 16.dp)
+                            .align(Alignment.Bottom),
+                    )
+                    AgeBar(age = film.age, 70f)
+                }
+                Box(modifier = Modifier.padding(bottom = 20.dp, start = 20.dp)) {
+                    film.rating?.let { CustomRatingView(rating = it) }
+                }
+                Text(
+                    text = film.description,
+                    fontSize = 20.sp,
+                    modifier = Modifier.padding(horizontal = 20.dp)
+                )
+                Text(
+                    text = "Актеры",
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 20.sp,
+                    modifier = Modifier
+                        .padding(bottom = 8.dp, top = 16.dp, start = 20.dp)
+                        .align(Alignment.Start),
+                )
+                LazyRow(
+                    contentPadding = PaddingValues(
+                        horizontal = 20.dp, vertical = 18.dp
+                    ),
+                    horizontalArrangement = Arrangement.spacedBy(16.dp),
+                ) {
+                    items(film.actors) {
+                        ActorItem(it)
+                    }
+                }
+            }
+        }) {
+        Image(
+            contentScale = ContentScale.FillWidth,
+            modifier = Modifier
+                .fillMaxWidth(),
+            painter = painterResource(R.drawable.test_image2),
+            contentDescription = null,
         )
-        Text(text = film.description, modifier = Modifier.padding(0.dp, 10.dp))
-        CustomRatingView(modifier = Modifier, film.rating ?: 0f, 3.dp)
+    }
+}
+
+@Composable
+fun ActorItem(actor: Actor) {
+    Column() {
+        Image(
+            modifier = Modifier
+                .height(200.dp)
+                .width(150.dp)
+                .clip(RoundedCornerShape(20.dp)),
+            contentScale = ContentScale.Crop,
+            painter = painterResource(R.drawable.actor),
+            contentDescription = null,
+        )
+        Text(text = actor.name, fontWeight = FontWeight.Bold, fontSize = 12.sp)
     }
 }

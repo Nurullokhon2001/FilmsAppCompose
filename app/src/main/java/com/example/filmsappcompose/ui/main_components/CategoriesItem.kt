@@ -16,7 +16,7 @@ fun CategoriesItem(category: String, onclick: (String) -> Unit) {
         text = category,
         modifier = Modifier
             .border(1.dp, Color.Black, CircleShape)
-            .padding(horizontal = 15.dp, vertical = 5.dp)
+            .padding(horizontal = 15.dp, vertical = 4.dp)
             .clickable { onclick.invoke(category) }
     )
 }
