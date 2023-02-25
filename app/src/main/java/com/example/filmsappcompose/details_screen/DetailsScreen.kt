@@ -56,7 +56,7 @@ fun DetailsScreen(
                         .fillMaxWidth()
                         .padding(top = 30.dp, start = 20.dp, end = 20.dp),
                 ) {
-                    CategoriesItem(category = "боевики", onclick = {})
+                    CategoriesItem(category = film.category, onclick = {})
                     Text(
                         text = film.date_publication.convertLongToTime(),
                         Modifier

@@ -1,6 +1,5 @@
 package com.example.filmsappcompose.main_screen
 
-import android.util.Log
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -12,6 +11,8 @@ import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -28,12 +29,23 @@ import com.example.filmsappcompose.utiils.Resource
 @Composable
 fun MainScreen(navController: NavHostController, mainScreenViewModel: MainScreenViewModel) {
     val films = mainScreenViewModel.films.collectAsState()
+    val category = remember { mutableStateOf("Популярное сейчас") }
+    val templateSearchValue = remember { mutableStateOf("") }
     Column() {
-        TopAppBar(backgroundColor = Color.Transparent, elevation = 0.dp) {
-            SearchBar()
+        TopAppBar(
+            backgroundColor = Color.Transparent, elevation = 0.dp, modifier = Modifier.height(65.dp)
+        ) {
+            SearchBar(onValueChange = {
+                templateSearchValue.value = it
+                mainScreenViewModel.onValueChange(templateSearchValue.value, category.value)
+            }, leadingIconClicked = {
+                mainScreenViewModel.leadingIconClicked()
+                templateSearchValue.value = ""
+                category.value = "Популярное сейчас"
+            })
         }
         Text(
-            text = "Популярное сейчас",
+            text = category.value,
             modifier = Modifier.padding(start = 20.dp),
             fontSize = 16.sp,
             fontWeight = FontWeight.Bold,
@@ -46,8 +58,9 @@ fun MainScreen(navController: NavHostController, mainScreenViewModel: MainScreen
             horizontalArrangement = Arrangement.spacedBy(16.dp),
         ) {
             items(mainScreenViewModel.categories.value) {
-                CategoriesItem(category = it, onclick = { category ->
-                    Log.e("MainScreen", "MainScreen: $category")
+                CategoriesItem(category = it, onclick = {
+                    category.value = it
+                    mainScreenViewModel.onValueChange(templateSearchValue.value, category.value)
                 })
             }
         }
@@ -64,8 +77,7 @@ fun MainScreen(navController: NavHostController, mainScreenViewModel: MainScreen
                 is Resource.Error -> {
                     Text(
                         text = (films.value as Resource.Error).throwable.message.toString(),
-                        modifier = Modifier
-                            .align(Alignment.Center)
+                        modifier = Modifier.align(Alignment.Center)
                     )
                 }
                 is Resource.Success -> {

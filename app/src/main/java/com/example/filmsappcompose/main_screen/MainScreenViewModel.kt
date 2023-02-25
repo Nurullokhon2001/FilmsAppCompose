@@ -20,9 +20,25 @@ class MainScreenViewModel(application: Application) : AndroidViewModel(applicati
         mutableStateOf(listOf("боевики", "драмы", "комедии", "артхаус", "мелодрамы", "комедии"))
     val categories: State<List<String>> = _categories
 
+    private var mokData = application.applicationContext.getMokData()
+
     init {
         viewModelScope.launch {
-            _films.value = Resource.Success(application.applicationContext.getMokData())
+            _films.value = Resource.Success(mokData)
         }
+    }
+
+    fun onValueChange(newText: String, category: String) {
+        _films.value = Resource.Loading
+        _films.value = Resource.Success(mokData.filter {
+            (it.name.contains(newText, true) ||
+                    it.description.contains(newText, true)) &&
+                    it.category.contains(category, true)
+        })
+    }
+
+    fun leadingIconClicked() {
+        _films.value = Resource.Loading
+        _films.value = Resource.Success(mokData)
     }
 }

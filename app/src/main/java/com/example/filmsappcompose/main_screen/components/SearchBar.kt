@@ -22,7 +22,7 @@ import androidx.compose.ui.unit.dp
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
-fun SearchBar() {
+fun SearchBar(onValueChange: (String) -> Unit, leadingIconClicked: () -> Unit) {
     val keyboardController = LocalSoftwareKeyboardController.current
     val message = remember { mutableStateOf("") }
     val isSearchVisible = remember { mutableStateOf(false) }
@@ -46,6 +46,7 @@ fun SearchBar() {
                 keyboardActions = KeyboardActions(onSearch = { keyboardController?.hide() }),
                 onValueChange = { newText ->
                     message.value = newText
+                    onValueChange(newText)
                 },
                 colors = TextFieldDefaults.outlinedTextFieldColors(
                     focusedBorderColor = Color.Black,
@@ -59,6 +60,8 @@ fun SearchBar() {
                         contentDescription = "close",
                         Modifier.clickable {
                             isSearchVisible.value = false
+                            message.value = ""
+                            leadingIconClicked.invoke()
                         })
                 },
                 label = { Text(text = "Введите текст для поиска") },

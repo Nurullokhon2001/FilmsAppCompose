@@ -9,6 +9,6 @@ data class Film(
     val rating: Float?,
     val description: String,
     val age: String,
-    val category: Int,
+    val category: String,
     val actors: List<Actor>
 )
