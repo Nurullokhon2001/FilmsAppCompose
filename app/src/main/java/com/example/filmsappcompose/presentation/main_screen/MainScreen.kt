@@ -1,11 +1,9 @@
 package com.example.filmsappcompose.presentation.main_screen
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
-import androidx.compose.foundation.lazy.items
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
@@ -23,20 +21,19 @@ import androidx.navigation.NavHostController
 import com.example.filmsappcompose.domain.model.Movie
 import com.example.filmsappcompose.presentation.main_screen.components.FilmCard
 import com.example.filmsappcompose.presentation.main_screen.components.SearchBar
-import com.example.filmsappcompose.presentation.ui.main_components.CategoriesItem
 
 @Composable
 fun MainScreen(navController: NavHostController, mainScreenViewModel: MainScreenViewModel) {
     val films = mainScreenViewModel.films.collectAsState()
     val category = remember { mutableStateOf("Популярное сейчас") }
     val templateSearchValue = remember { mutableStateOf("") }
-    Column() {
+    Column {
         TopAppBar(
             backgroundColor = Color.Transparent, elevation = 0.dp, modifier = Modifier.height(65.dp)
         ) {
             SearchBar(onValueChange = {
                 templateSearchValue.value = it
-                mainScreenViewModel.onValueChange(templateSearchValue.value, category.value)
+                mainScreenViewModel.onValueChange(templateSearchValue.value)
             }, leadingIconClicked = {
                 mainScreenViewModel.leadingIconClicked()
                 templateSearchValue.value = ""
@@ -50,19 +47,19 @@ fun MainScreen(navController: NavHostController, mainScreenViewModel: MainScreen
             fontWeight = FontWeight.Bold,
         )
 
-        LazyRow(
-            contentPadding = PaddingValues(
-                horizontal = 20.dp, vertical = 18.dp
-            ),
-            horizontalArrangement = Arrangement.spacedBy(16.dp),
-        ) {
-            items(mainScreenViewModel.categories.value) {
-                CategoriesItem(category = it, onclick = {
-                    category.value = it
-                    mainScreenViewModel.onValueChange(templateSearchValue.value, category.value)
-                })
-            }
-        }
+//        LazyRow(
+//            contentPadding = PaddingValues(
+//                horizontal = 20.dp, vertical = 18.dp
+//            ),
+//            horizontalArrangement = Arrangement.spacedBy(16.dp),
+//        ) {
+//            items(mainScreenViewModel.categories.value) {
+//                CategoriesItem(category = it, onclick = {
+//                    category.value = it
+//                    mainScreenViewModel.onValueChange(templateSearchValue.value)
+//                })
+//            }
+//        }
 
         Box(modifier = Modifier.fillMaxSize()) {
             when (films.value) {

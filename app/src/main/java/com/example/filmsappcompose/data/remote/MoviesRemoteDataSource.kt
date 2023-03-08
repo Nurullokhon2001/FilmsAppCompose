@@ -11,4 +11,10 @@ class MoviesRemoteDataSource {
             RetrofitClient.create().getPopularMovies().toDomain()
         }
     }
+
+    suspend fun searchMovies(query: String): Resource<List<Movie>, Throwable> {
+        return runOperationCatching {
+            RetrofitClient.create().searchMovies(query = query).toDomain()
+        }
+    }
 }

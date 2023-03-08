@@ -15,4 +15,10 @@ class RepositoryImpl(
             emit(remote.getPopularMovies())
         }
     }
+
+    override suspend fun searchMovies(query: String): Flow<Resource<List<Movie>, Throwable>> {
+        return flow {
+            emit(remote.searchMovies(query))
+        }
+    }
 }

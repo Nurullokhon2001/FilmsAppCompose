@@ -12,4 +12,10 @@ interface ApiInterface {
     suspend fun getPopularMovies(
         @Query("api_key") apiKey: String = API_KEY,
     ): Movies
+
+    @GET("search/movie")
+    suspend fun searchMovies(
+        @Query("api_key") apiKey: String = API_KEY,
+        @Query("query") query: String ,
+    ): Movies
 }

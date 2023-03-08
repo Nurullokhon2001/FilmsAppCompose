@@ -11,11 +11,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
+import com.example.filmsappcompose.R
 import com.example.filmsappcompose.domain.model.Movie
 import com.example.filmsappcompose.presentation.ui.main_components.AgeBar
 import com.example.filmsappcompose.presentation.ui.main_components.CustomRatingView
@@ -42,6 +44,7 @@ fun FilmCard(movie: Movie, navController: NavHostController) {
                         .fillMaxWidth()
                         .clip(RoundedCornerShape(20.dp)),
                     model = movie.image,
+                    placeholder = painterResource(R.drawable.test_image),
                     contentDescription = null,
                 )
                 Text(
