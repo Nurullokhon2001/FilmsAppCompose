@@ -1,4 +1,4 @@
-package com.example.filmsappcompose.ui.main_components
+package com.example.filmsappcompose.presentation.ui.main_components
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Text

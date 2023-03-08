@@ -11,6 +11,5 @@ interface ApiInterface {
     @GET("movie/popular")
     suspend fun getPopularMovies(
         @Query("api_key") apiKey: String = API_KEY,
-        // @Query("language") language: String = "ru-RU"
     ): Movies
 }

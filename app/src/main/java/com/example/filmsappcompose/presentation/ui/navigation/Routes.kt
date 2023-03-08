@@ -1,4 +1,4 @@
-package com.example.filmsappcompose.ui.navigation
+package com.example.filmsappcompose.presentation.ui.navigation
 
 
 sealed class Routes(val routes: String) {

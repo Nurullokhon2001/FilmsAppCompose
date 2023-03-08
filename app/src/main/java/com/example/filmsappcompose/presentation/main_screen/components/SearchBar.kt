@@ -1,4 +1,4 @@
-package com.example.filmsappcompose.main_screen.components
+package com.example.filmsappcompose.presentation.main_screen.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable

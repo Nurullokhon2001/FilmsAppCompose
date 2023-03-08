@@ -1,4 +1,4 @@
-package com.example.filmsappcompose.main_screen
+package com.example.filmsappcompose.presentation.main_screen
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
@@ -21,9 +21,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.filmsappcompose.domain.model.Movie
-import com.example.filmsappcompose.main_screen.components.FilmCard
-import com.example.filmsappcompose.main_screen.components.SearchBar
-import com.example.filmsappcompose.ui.main_components.CategoriesItem
+import com.example.filmsappcompose.presentation.main_screen.components.FilmCard
+import com.example.filmsappcompose.presentation.main_screen.components.SearchBar
+import com.example.filmsappcompose.presentation.ui.main_components.CategoriesItem
 
 @Composable
 fun MainScreen(navController: NavHostController, mainScreenViewModel: MainScreenViewModel) {

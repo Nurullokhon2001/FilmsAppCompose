@@ -1,6 +1,5 @@
-package com.example.filmsappcompose.main_screen.components
+package com.example.filmsappcompose.presentation.main_screen.components
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -12,16 +11,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import com.example.filmsappcompose.R
+import coil.compose.AsyncImage
 import com.example.filmsappcompose.domain.model.Movie
-import com.example.filmsappcompose.ui.main_components.AgeBar
-import com.example.filmsappcompose.ui.main_components.CustomRatingView
-import com.example.filmsappcompose.ui.navigation.Routes
+import com.example.filmsappcompose.presentation.ui.main_components.AgeBar
+import com.example.filmsappcompose.presentation.ui.main_components.CustomRatingView
+import com.example.filmsappcompose.presentation.ui.navigation.Routes
 
 @Composable
 fun FilmCard(movie: Movie, navController: NavHostController) {
@@ -38,12 +36,12 @@ fun FilmCard(movie: Movie, navController: NavHostController) {
             elevation = 0.dp
         ) {
             Column {
-                Image(
+                AsyncImage(
                     contentScale = ContentScale.FillWidth,
                     modifier = Modifier
                         .fillMaxWidth()
                         .clip(RoundedCornerShape(20.dp)),
-                    painter = painterResource(R.drawable.test_image),
+                    model = movie.image,
                     contentDescription = null,
                 )
                 Text(

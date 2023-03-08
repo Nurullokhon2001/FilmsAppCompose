@@ -1,4 +1,4 @@
-package com.example.filmsappcompose.details_screen
+package com.example.filmsappcompose.presentation.details_screen
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
@@ -15,7 +15,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.filmsappcompose.R
 import com.example.filmsappcompose.data.dto.ActorDto
-import com.example.filmsappcompose.main_screen.MainScreenViewModel
+import com.example.filmsappcompose.presentation.main_screen.MainScreenViewModel
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable

@@ -1,4 +1,4 @@
-package com.example.filmsappcompose.ui.theme
+package com.example.filmsappcompose.presentation.ui.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle

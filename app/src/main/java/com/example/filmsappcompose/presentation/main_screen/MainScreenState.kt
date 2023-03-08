@@ -1,4 +1,4 @@
-package com.example.filmsappcompose.main_screen
+package com.example.filmsappcompose.presentation.main_screen
 
 import com.example.filmsappcompose.domain.model.Movie
 

@@ -2,7 +2,8 @@ package com.example.filmsappcompose.utiils
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.util.Log
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.example.filmsappcompose.data.dto.MovieDto
 import com.google.gson.Gson
 import timber.log.Timber
@@ -26,7 +27,7 @@ fun Context.loadJsonFromAssets(): String {
         input.close()
         result = String(bytes)
     }.onFailure {
-        Timber.tag("loadJsonFromAssets").e("loadJsonFromAssets: " + it.message + " ")
+        Timber.tag("loadJsonFromAssets").e("loadJsonFromAssets: %s", it.message)
     }
     return result
 }
@@ -37,3 +38,8 @@ fun Context.getMokData(): List<MovieDto> {
         Array<MovieDto>::class.java
     ).toList()
 }
+
+inline fun <VM : ViewModel> viewModelFactory(crossinline f: () -> VM) =
+    object : ViewModelProvider.Factory {
+        override fun <T : ViewModel> create(aClass: Class<T>): T = f() as T
+    }

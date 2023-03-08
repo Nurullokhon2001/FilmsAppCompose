@@ -1,12 +1,12 @@
-package com.example.filmsappcompose.ui.navigation
+package com.example.filmsappcompose.presentation.ui.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.example.filmsappcompose.details_screen.DetailsScreen
-import com.example.filmsappcompose.main_screen.MainScreen
-import com.example.filmsappcompose.main_screen.MainScreenViewModel
+import com.example.filmsappcompose.presentation.details_screen.DetailsScreen
+import com.example.filmsappcompose.presentation.main_screen.MainScreen
+import com.example.filmsappcompose.presentation.main_screen.MainScreenViewModel
 
 @Composable
 fun Navigation(
