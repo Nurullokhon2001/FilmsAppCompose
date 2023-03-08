@@ -18,22 +18,20 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.filmsappcompose.R
-import com.example.filmsappcompose.main_screen.domain.Film
+import com.example.filmsappcompose.domain.model.Movie
 import com.example.filmsappcompose.ui.main_components.AgeBar
 import com.example.filmsappcompose.ui.main_components.CustomRatingView
 import com.example.filmsappcompose.ui.navigation.Routes
 
 @Composable
-fun FilmCard(film: Film, navController: NavHostController) {
-    Box(
-        modifier = Modifier
-            .padding(20.dp)
-            .fillMaxSize()
-            .background(Color.Transparent)
-            .clickable {
-                navController.navigate(route = "${Routes.DetailsScreen.routes}/${film.id}")
-            }
-    ) {
+fun FilmCard(movie: Movie, navController: NavHostController) {
+    Box(modifier = Modifier
+        .padding(20.dp)
+        .fillMaxSize()
+        .background(Color.Transparent)
+        .clickable {
+            navController.navigate(route = "${Routes.DetailsScreen.routes}/${movie.id}")
+        }) {
         Card(
             modifier = Modifier.background(Color.Transparent),
             backgroundColor = Color.Transparent,
@@ -49,7 +47,7 @@ fun FilmCard(film: Film, navController: NavHostController) {
                     contentDescription = null,
                 )
                 Text(
-                    text = film.name,
+                    text = movie.name,
                     color = Color.Black,
                     fontWeight = FontWeight.Bold,
                     modifier = Modifier.padding(vertical = 8.dp),
@@ -57,19 +55,18 @@ fun FilmCard(film: Film, navController: NavHostController) {
                     overflow = TextOverflow.Ellipsis
                 )
                 Text(
-                    text = film.description,
+                    text = movie.description,
                     color = Color.Black,
                     maxLines = 5,
                     overflow = TextOverflow.Ellipsis
                 )
                 Row(
                     modifier = Modifier
-                        .padding(top = 15.dp, end = 5.dp, bottom = 5.dp)
-                        .fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceBetween
+                        .padding(top = 15.dp, end = 10.dp, bottom = 5.dp)
+                        .fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween
                 ) {
-                    CustomRatingView(modifier = Modifier, film.rating ?: 0f, 3.dp)
-                    AgeBar(film.age)
+                    CustomRatingView(modifier = Modifier, movie.rating, 3.dp)
+                    AgeBar(movie.age)
                 }
             }
         }

@@ -3,8 +3,9 @@ package com.example.filmsappcompose.utiils
 import android.annotation.SuppressLint
 import android.content.Context
 import android.util.Log
-import com.example.filmsappcompose.main_screen.domain.Film
+import com.example.filmsappcompose.data.dto.MovieDto
 import com.google.gson.Gson
+import timber.log.Timber
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -25,14 +26,14 @@ fun Context.loadJsonFromAssets(): String {
         input.close()
         result = String(bytes)
     }.onFailure {
-        Log.e("loadJsonFromAssets", "loadJsonFromAssets: ${it.message} ")
+        Timber.tag("loadJsonFromAssets").e("loadJsonFromAssets: " + it.message + " ")
     }
     return result
 }
 
-fun Context.getMokData(): List<Film> {
+fun Context.getMokData(): List<MovieDto> {
     return Gson().fromJson(
         this.loadJsonFromAssets(),
-        Array<Film>::class.java
+        Array<MovieDto>::class.java
     ).toList()
 }

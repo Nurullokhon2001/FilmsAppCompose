@@ -20,11 +20,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import com.example.filmsappcompose.domain.model.Movie
 import com.example.filmsappcompose.main_screen.components.FilmCard
 import com.example.filmsappcompose.main_screen.components.SearchBar
-import com.example.filmsappcompose.main_screen.domain.Film
 import com.example.filmsappcompose.ui.main_components.CategoriesItem
-import com.example.filmsappcompose.utiils.Resource
 
 @Composable
 fun MainScreen(navController: NavHostController, mainScreenViewModel: MainScreenViewModel) {
@@ -67,21 +66,21 @@ fun MainScreen(navController: NavHostController, mainScreenViewModel: MainScreen
 
         Box(modifier = Modifier.fillMaxSize()) {
             when (films.value) {
-                is Resource.Loading -> {
+                is MainScreenState.Loading -> {
                     CircularProgressIndicator(
                         modifier = Modifier
                             .size(50.dp)
                             .align(Alignment.Center)
                     )
                 }
-                is Resource.Error -> {
+                is MainScreenState.Error -> {
                     Text(
-                        text = (films.value as Resource.Error).throwable.message.toString(),
+                        text = (films.value as MainScreenState.Error).error.message.toString(),
                         modifier = Modifier.align(Alignment.Center)
                     )
                 }
-                is Resource.Success -> {
-                    GetFilms(navController, (films.value as Resource.Success).data)
+                is MainScreenState.Content -> {
+                    GetFilms(navController, (films.value as MainScreenState.Content).data)
                 }
             }
         }
@@ -89,12 +88,12 @@ fun MainScreen(navController: NavHostController, mainScreenViewModel: MainScreen
 }
 
 @Composable
-fun GetFilms(navController: NavHostController, films: List<Film>) {
+fun GetFilms(navController: NavHostController, movies: List<Movie>) {
     LazyVerticalGrid(
         columns = GridCells.Fixed(2), modifier = Modifier.fillMaxSize()
     ) {
-        items(films) { movie ->
-            FilmCard(film = movie, navController)
+        items(movies) { movie ->
+            FilmCard(movie = movie, navController)
         }
     }
 }
