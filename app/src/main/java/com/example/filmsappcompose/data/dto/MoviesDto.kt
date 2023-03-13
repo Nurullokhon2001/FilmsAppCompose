@@ -3,8 +3,8 @@ package com.example.filmsappcompose.data.dto
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class Movies(
+data class MoviesDto(
     val results: List<MovieDto>
 )
 
-fun Movies.toDomain() = results.map { it.toDomain() }
+fun MoviesDto.toDomain() = results.map { it.toDomain() }
