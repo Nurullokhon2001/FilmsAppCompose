@@ -7,6 +7,8 @@ buildscript {
         okhttp_version = '5.0.0-alpha.1'
         room_version = '2.5.0'
         coil_version = '2.1.0'
+        serialization_version = "1.4.1"
+        timber_version = "5.0.1"
     }
 }// Top-level build file where you can add configuration options common to all sub-projects/modules.
 plugins {

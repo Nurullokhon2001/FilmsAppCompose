@@ -64,7 +64,7 @@ fun SearchBar(onValueChange: (String) -> Unit, leadingIconClicked: () -> Unit) {
                             leadingIconClicked.invoke()
                         })
                 },
-                label = { Text(text = "Введите текст для поиска") },
+                label = { Text(text = "Enter text to search") },
             )
         } else {
             Image(

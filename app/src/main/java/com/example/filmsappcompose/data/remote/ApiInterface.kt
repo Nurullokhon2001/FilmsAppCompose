@@ -1,7 +1,9 @@
 package com.example.filmsappcompose.data.remote
 
+import com.example.filmsappcompose.data.dto.ActorsDto
+import com.example.filmsappcompose.data.dto.MovieDetailsDto
 import com.example.filmsappcompose.data.dto.MoviesDto
-import okhttp3.Response
+import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -21,9 +23,15 @@ interface ApiInterface {
         @Query("query") query: String,
     ): MoviesDto
 
-    @GET("/movie/{movie_id}")
-    fun getMovieDetails(
+    @GET("movie/{movie_id}")
+    suspend fun getMovieDetails(
+        @Path("movie_id") movieId: Int,
         @Query("api_key") apiKey: String = API_KEY,
-        @Path("movie_id") movieId: Int
-    ): Response
+    ): MovieDetailsDto
+
+    @GET("movie/{movie_id}/credits?")
+    suspend fun getMovieActors(
+        @Path("movie_id") movieId: Int,
+        @Query("api_key") api_key: String = API_KEY,
+    ): ActorsDto
 }

@@ -1,21 +1,12 @@
 package com.example.filmsappcompose.utiils
 
-import android.annotation.SuppressLint
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.filmsappcompose.data.dto.MovieDto
 import com.google.gson.Gson
 import timber.log.Timber
-import java.text.SimpleDateFormat
 import java.util.*
-
-@SuppressLint("SimpleDateFormat")
-fun Long.convertLongToTime(): String {
-    val date = Date(this)
-    val format = SimpleDateFormat("yyyy.MM.dd")
-    return format.format(date)
-}
 
 fun Context.loadJsonFromAssets(): String {
     var result = ""

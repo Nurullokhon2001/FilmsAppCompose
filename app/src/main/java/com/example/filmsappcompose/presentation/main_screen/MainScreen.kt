@@ -24,8 +24,8 @@ import com.example.filmsappcompose.presentation.main_screen.components.SearchBar
 
 @Composable
 fun MainScreen(navController: NavHostController, mainScreenViewModel: MainScreenViewModel) {
-    val films = mainScreenViewModel.films.collectAsState()
-    val category = remember { mutableStateOf("Популярное сейчас") }
+    val films = mainScreenViewModel.movie.collectAsState()
+    val category = remember { mutableStateOf("Popular now") }
     val templateSearchValue = remember { mutableStateOf("") }
     Column {
         TopAppBar(
@@ -37,7 +37,7 @@ fun MainScreen(navController: NavHostController, mainScreenViewModel: MainScreen
             }, leadingIconClicked = {
                 mainScreenViewModel.leadingIconClicked()
                 templateSearchValue.value = ""
-                category.value = "Популярное сейчас"
+                category.value = "Popular now"
             })
         }
         Text(

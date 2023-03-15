@@ -12,18 +12,14 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 class MainScreenViewModel(
-    application: Application,
     private val getPopularMoviesUseCase: GetPopularMoviesUseCase,
-    private val searchMoviesUseCase: SearchMoviesUseCase
+    private val searchMoviesUseCase: SearchMoviesUseCase,
+    application: Application,
 ) :
     AndroidViewModel(application) {
 
-    private val _films = MutableStateFlow<MainScreenState>(MainScreenState.Loading)
-    val films = _films.asStateFlow()
-
-//    private val _categories =
-//        mutableStateOf(listOf("боевики", "драмы", "комедии", "артхаус", "мелодрамы", "комедии"))
-//    val categories: State<List<String>> = _categories
+    private val _movies = MutableStateFlow<MainScreenState>(MainScreenState.Loading)
+    val movie = _movies.asStateFlow()
 
     init {
         getPopularMovies()
@@ -34,10 +30,10 @@ class MainScreenViewModel(
             if (newText.isNotBlank()) {
                 searchMoviesUseCase.invoke(newText).collect {
                     it.doOnError { error ->
-                        _films.emit(MainScreenState.Error(error))
+                        _movies.emit(MainScreenState.Error(error))
                     }
                     it.doOnSuccess { data ->
-                        _films.emit(MainScreenState.Content(data))
+                        _movies.emit(MainScreenState.Content(data))
                     }
                 }
             } else {
@@ -54,10 +50,10 @@ class MainScreenViewModel(
         viewModelScope.launch {
             getPopularMoviesUseCase.invoke().collect {
                 it.doOnError { error ->
-                    _films.emit(MainScreenState.Error(error))
+                    _movies.emit(MainScreenState.Error(error))
                 }
                 it.doOnSuccess { data ->
-                    _films.emit(MainScreenState.Content(data))
+                    _movies.emit(MainScreenState.Content(data))
                 }
             }
         }
