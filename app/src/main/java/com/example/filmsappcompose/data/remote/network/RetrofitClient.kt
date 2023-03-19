@@ -1,4 +1,4 @@
-package com.example.filmsappcompose.data.remote
+package com.example.filmsappcompose.data.remote.network
 
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

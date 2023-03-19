@@ -8,6 +8,8 @@ import kotlinx.coroutines.flow.Flow
 
 interface Repository {
     suspend fun getPopularMovies(): Flow<Resource<List<Movie>, Throwable>>
+    suspend fun getMovies(): Flow<Resource<List<Movie>, Throwable>>
+    suspend fun insertMovies(movies: List<Movie>)
     suspend fun searchMovies(query: String): Flow<Resource<List<Movie>, Throwable>>
     suspend fun getMovieDetails(movieId: Int): Flow<Resource<MovieDetails, Throwable>>
     suspend fun getMovieActors(movieId: Int): List<Actor>

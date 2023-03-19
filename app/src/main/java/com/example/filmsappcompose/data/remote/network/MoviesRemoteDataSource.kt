@@ -1,6 +1,6 @@
-package com.example.filmsappcompose.data.remote
+package com.example.filmsappcompose.data.remote.network
 
-import com.example.filmsappcompose.data.dto.toDomain
+import com.example.filmsappcompose.data.remote.dto.toDomain
 import com.example.filmsappcompose.domain.model.Actor
 import com.example.filmsappcompose.domain.model.MovieDetails
 import com.example.filmsappcompose.domain.model.Movie

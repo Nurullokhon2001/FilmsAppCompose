@@ -1,9 +1,8 @@
-package com.example.filmsappcompose.data.remote
+package com.example.filmsappcompose.data.remote.network
 
-import com.example.filmsappcompose.data.dto.ActorsDto
-import com.example.filmsappcompose.data.dto.MovieDetailsDto
-import com.example.filmsappcompose.data.dto.MoviesDto
-import retrofit2.Response
+import com.example.filmsappcompose.data.remote.dto.ActorsDto
+import com.example.filmsappcompose.data.remote.dto.MovieDetailsDto
+import com.example.filmsappcompose.data.remote.dto.MoviesDto
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
