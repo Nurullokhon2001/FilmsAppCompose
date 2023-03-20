@@ -1,12 +1,12 @@
 [
   {
     "id": 0,
-    "name": "Гнев человеческий 1",
+    "title": "Гнев человеческий 1",
     "age": "18+",
-    "image": "https://yandex.ru/images/search?text=Кукушка&nl=1&source=morda&pos=1&rpt=simage&img_url=http%3A%2F%2Fplacepic.ru%2Fwp-content%2Fuploads%2F2018%2F11%2F2-584.jpg&lr=10322",
+    "poster_path": "https://yandex.ru/images/search?text=Кукушка&nl=1&source=morda&pos=1&rpt=simage&img_url=http%3A%2F%2Fplacepic.ru%2Fwp-content%2Fuploads%2F2018%2F11%2F2-584.jpg&lr=10322",
     "date_publication": 1675209600,
     "rating": 0,
-    "description": "Эйч — загадочный и холодный на вид джентльмен, но внутри него пылает жажда справедливости. Преследуя свои мотивы, он внедряется в инкассаторскую компанию, чтобы выйти на соучастников серии многомиллионных ограблений, потрясших Лос-Анджелес. В этой запутанной игре у каждого своя роль, но под подозрением оказываются все. Виновных же обязательно постигнет гнев человеческий. ",
+    "overview": "Эйч — загадочный и холодный на вид джентльмен, но внутри него пылает жажда справедливости. Преследуя свои мотивы, он внедряется в инкассаторскую компанию, чтобы выйти на соучастников серии многомиллионных ограблений, потрясших Лос-Анджелес. В этой запутанной игре у каждого своя роль, но под подозрением оказываются все. Виновных же обязательно постигнет гнев человеческий. ",
     "category": "боевики",
     "actors": [
       {
@@ -37,12 +37,12 @@
   },
   {
     "id": 1,
-    "name": "Мортал Комбат",
+    "title": "Мортал Комбат",
     "age": "16+",
-    "image": "https://yandex.ru/images/search?text=Кукушка&nl=1&source=morda&pos=1&rpt=simage&img_url=http%3A%2F%2Fplacepic.ru%2Fwp-content%2Fuploads%2F2018%2F11%2F2-584.jpg&lr=10322",
+    "poster_path": "https://yandex.ru/images/search?text=Кукушка&nl=1&source=morda&pos=1&rpt=simage&img_url=http%3A%2F%2Fplacepic.ru%2Fwp-content%2Fuploads%2F2018%2F11%2F2-584.jpg&lr=10322",
     "date_publication": 1675209600,
     "rating": 1,
-    "description": "Боец смешанных единоборств Коул Янг \u2028не раз соглашался проиграть за деньги. \u2028Он не знает о своем наследии... ",
+    "overview": "Боец смешанных единоборств Коул Янг \u2028не раз соглашался проиграть за деньги. \u2028Он не знает о своем наследии... ",
     "category": "боевики",
     "actors": [
       {
@@ -73,12 +73,12 @@
   },
   {
     "id": 2,
-    "name": "Упс... Приплыли ",
+    "title": "Упс... Приплыли ",
     "age": "12+",
-    "image": "https://yandex.ru/images/search?text=Кукушка&nl=1&source=morda&pos=1&rpt=simage&img_url=http%3A%2F%2Fplacepic.ru%2Fwp-content%2Fuploads%2F2018%2F11%2F2-584.jpg&lr=10322",
+    "poster_path": "https://yandex.ru/images/search?text=Кукушка&nl=1&source=morda&pos=1&rpt=simage&img_url=http%3A%2F%2Fplacepic.ru%2Fwp-content%2Fuploads%2F2018%2F11%2F2-584.jpg&lr=10322",
     "date_publication": 1675209600,
     "rating": 2,
-    "description": "От Великого потопа зверей спас ковчег. Но спустя полгода скитаний они готовы сбежать \u2028с него куда угодно... ",
+    "overview": "От Великого потопа зверей спас ковчег. Но спустя полгода скитаний они готовы сбежать \u2028с него куда угодно... ",
     "category": "комедии",
     "actors": [
       {
@@ -109,12 +109,12 @@
   },
   {
     "id": 3,
-    "name": "The Box ",
+    "title": "The Box ",
     "age": "18+",
-    "image": "https://yandex.ru/images/search?text=Кукушка&nl=1&source=morda&pos=1&rpt=simage&img_url=http%3A%2F%2Fplacepic.ru%2Fwp-content%2Fuploads%2F2018%2F11%2F2-584.jpg&lr=10322",
+    "poster_path": "https://yandex.ru/images/search?text=Кукушка&nl=1&source=morda&pos=1&rpt=simage&img_url=http%3A%2F%2Fplacepic.ru%2Fwp-content%2Fuploads%2F2018%2F11%2F2-584.jpg&lr=10322",
     "date_publication": 1675209600,
     "rating": 3,
-    "description": "Уличный музыкант знакомится \u2028с музыкальным продюсером, и они вдвоём отправляются \u2028в путешествие... ",
+    "overview": "Уличный музыкант знакомится \u2028с музыкальным продюсером, и они вдвоём отправляются \u2028в путешествие... ",
     "category": "драмы",
     "actors": [
       {
@@ -145,12 +145,12 @@
   },
   {
     "id": 4,
-    "name": "Сага о Дэни Эрнандасе ",
+    "title": "Сага о Дэни Эрнандасе ",
     "age": "12+",
-    "image": "https://yandex.ru/images/search?text=Кукушка&nl=1&source=morda&pos=1&rpt=simage&img_url=http%3A%2F%2Fplacepic.ru%2Fwp-content%2Fuploads%2F2018%2F11%2F2-584.jpg&lr=10322",
+    "poster_path": "https://yandex.ru/images/search?text=Кукушка&nl=1&source=morda&pos=1&rpt=simage&img_url=http%3A%2F%2Fplacepic.ru%2Fwp-content%2Fuploads%2F2018%2F11%2F2-584.jpg&lr=10322",
     "date_publication": 1675209600,
     "rating": 4,
-    "description": "Tekashi69 или \u2028Сикснайн — знаменитый бруклинский рэпер \u2028с радужными \u2028волосами — прогремел... ",
+    "overview": "Tekashi69 или \u2028Сикснайн — знаменитый бруклинский рэпер \u2028с радужными \u2028волосами — прогремел... ",
     "category": "артхаус",
     "actors": [
       {
@@ -181,12 +181,12 @@
   },
   {
     "id": 5,
-    "name": "Пчелка Майя ",
+    "title": "Пчелка Майя ",
     "age": "12+",
-    "image": "https://yandex.ru/images/search?text=Кукушка&nl=1&source=morda&pos=1&rpt=simage&img_url=http%3A%2F%2Fplacepic.ru%2Fwp-content%2Fuploads%2F2018%2F11%2F2-584.jpg&lr=10322",
+    "poster_path": "https://yandex.ru/images/search?text=Кукушка&nl=1&source=morda&pos=1&rpt=simage&img_url=http%3A%2F%2Fplacepic.ru%2Fwp-content%2Fuploads%2F2018%2F11%2F2-584.jpg&lr=10322",
     "date_publication": 1675209600,
     "rating": 5,
-    "description": "Когда упрямая пчелка Майя и ее лучший друг Вилли спасают принцессу-муравьишку, начинается сказочное...",
+    "overview": "Когда упрямая пчелка Майя и ее лучший друг Вилли спасают принцессу-муравьишку, начинается сказочное...",
     "category": "мелодрамы",
     "actors": [
       {

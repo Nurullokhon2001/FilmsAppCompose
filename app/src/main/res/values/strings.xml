@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">FilmsAppCompose</string>
+    <string name="popular_now">Popular now</string>
 </resources>

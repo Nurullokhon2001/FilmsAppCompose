@@ -1,19 +1,12 @@
 package com.example.filmsappcompose.utiils
 
-import android.annotation.SuppressLint
 import android.content.Context
-import android.util.Log
-import com.example.filmsappcompose.main_screen.domain.Film
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import com.example.filmsappcompose.data.dto.MovieDto
 import com.google.gson.Gson
-import java.text.SimpleDateFormat
+import timber.log.Timber
 import java.util.*
-
-@SuppressLint("SimpleDateFormat")
-fun Long.convertLongToTime(): String {
-    val date = Date(this)
-    val format = SimpleDateFormat("yyyy.MM.dd")
-    return format.format(date)
-}
 
 fun Context.loadJsonFromAssets(): String {
     var result = ""
@@ -25,14 +18,19 @@ fun Context.loadJsonFromAssets(): String {
         input.close()
         result = String(bytes)
     }.onFailure {
-        Log.e("loadJsonFromAssets", "loadJsonFromAssets: ${it.message} ")
+        Timber.tag("loadJsonFromAssets").e("loadJsonFromAssets: %s", it.message)
     }
     return result
 }
 
-fun Context.getMokData(): List<Film> {
+fun Context.getMokData(): List<MovieDto> {
     return Gson().fromJson(
         this.loadJsonFromAssets(),
-        Array<Film>::class.java
+        Array<MovieDto>::class.java
     ).toList()
 }
+
+inline fun <VM : ViewModel> viewModelFactory(crossinline f: () -> VM) =
+    object : ViewModelProvider.Factory {
+        override fun <T : ViewModel> create(aClass: Class<T>): T = f() as T
+    }
