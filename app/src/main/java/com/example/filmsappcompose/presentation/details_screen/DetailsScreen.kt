@@ -159,7 +159,7 @@ fun DetailsScreen(
 
 @Composable
 fun ActorItem(actor: Actor) {
-    Column() {
+    Column {
         AsyncImage(
             modifier = Modifier
                 .height(200.dp)

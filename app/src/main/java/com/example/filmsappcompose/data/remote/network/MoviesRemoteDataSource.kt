@@ -2,8 +2,8 @@ package com.example.filmsappcompose.data.remote.network
 
 import com.example.filmsappcompose.data.remote.dto.toDomain
 import com.example.filmsappcompose.domain.model.Actor
-import com.example.filmsappcompose.domain.model.MovieDetails
 import com.example.filmsappcompose.domain.model.Movie
+import com.example.filmsappcompose.domain.model.MovieDetails
 import com.example.filmsappcompose.utiils.Resource
 import com.example.filmsappcompose.utiils.runOperationCatching
 import javax.inject.Inject

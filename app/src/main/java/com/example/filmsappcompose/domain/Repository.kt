@@ -1,8 +1,8 @@
 package com.example.filmsappcompose.domain
 
 import com.example.filmsappcompose.domain.model.Actor
-import com.example.filmsappcompose.domain.model.MovieDetails
 import com.example.filmsappcompose.domain.model.Movie
+import com.example.filmsappcompose.domain.model.MovieDetails
 import com.example.filmsappcompose.utiils.Resource
 import kotlinx.coroutines.flow.Flow
 

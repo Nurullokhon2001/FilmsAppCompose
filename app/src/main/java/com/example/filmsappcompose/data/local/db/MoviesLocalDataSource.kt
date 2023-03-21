@@ -15,7 +15,7 @@ class MoviesLocalDataSource @Inject constructor(private val moviesDao: MoviesDao
         }
     }
 
-    suspend fun insertMovies(movies : List<Movie>) {
+    suspend fun insertMovies(movies: List<Movie>) {
         moviesDao.insertMovies(movies.map { it.toData() })
     }
 }

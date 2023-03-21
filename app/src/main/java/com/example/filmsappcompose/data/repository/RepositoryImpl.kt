@@ -4,8 +4,8 @@ import com.example.filmsappcompose.data.local.db.MoviesLocalDataSource
 import com.example.filmsappcompose.data.remote.network.MoviesRemoteDataSource
 import com.example.filmsappcompose.domain.Repository
 import com.example.filmsappcompose.domain.model.Actor
-import com.example.filmsappcompose.domain.model.MovieDetails
 import com.example.filmsappcompose.domain.model.Movie
+import com.example.filmsappcompose.domain.model.MovieDetails
 import com.example.filmsappcompose.utiils.Resource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class SearchMoviesUseCase @Inject constructor(private val repository: Repository) {
-    suspend operator fun invoke(query:String): Flow<Resource<List<Movie>, Throwable>> {
-        return repository.searchMovies(query )
+    suspend operator fun invoke(query: String): Flow<Resource<List<Movie>, Throwable>> {
+        return repository.searchMovies(query)
     }
 }

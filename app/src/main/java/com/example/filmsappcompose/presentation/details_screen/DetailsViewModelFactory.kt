@@ -4,16 +4,16 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import dagger.assisted.AssistedFactory
 
-class Factory(
-    private val assistedFactory: UserViewModelAssistedFactory,
-    private val name: Int,
+class DetailsViewModelFactory(
+    private val detailsViewModelAssistedFactory: DetailsViewModelAssistedFactory,
+    private val movieId: Int,
 ) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return assistedFactory.create(name) as T
+        return detailsViewModelAssistedFactory.create(movieId) as T
     }
 }
 
 @AssistedFactory
-interface UserViewModelAssistedFactory {
-    fun create(name: Int): DetailsViewModel
+interface DetailsViewModelAssistedFactory {
+    fun create(movieId: Int): DetailsViewModel
 }
