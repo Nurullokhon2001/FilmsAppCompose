@@ -6,27 +6,28 @@ import com.example.filmsappcompose.domain.model.MovieDetails
 import com.example.filmsappcompose.domain.model.Movie
 import com.example.filmsappcompose.utiils.Resource
 import com.example.filmsappcompose.utiils.runOperationCatching
+import javax.inject.Inject
 
-class MoviesRemoteDataSource {
+class MoviesRemoteDataSource @Inject constructor(private val apiInterface: ApiInterface) {
     suspend fun getPopularMovies(): Resource<List<Movie>, Throwable> {
         return runOperationCatching {
-            RetrofitClient.create().getPopularMovies().toDomain()
+            apiInterface.getPopularMovies().toDomain()
         }
     }
 
     suspend fun searchMovies(query: String): Resource<List<Movie>, Throwable> {
         return runOperationCatching {
-            RetrofitClient.create().searchMovies(query = query).toDomain()
+            apiInterface.searchMovies(query = query).toDomain()
         }
     }
 
     suspend fun getMovieDetails(movieId: Int): Resource<MovieDetails, Throwable> {
         return runOperationCatching {
-            RetrofitClient.create().getMovieDetails(movieId).toDomain()
+            apiInterface.getMovieDetails(movieId).toDomain()
         }
     }
 
     suspend fun getMovieActors(movieId: Int): List<Actor> {
-        return RetrofitClient.create().getMovieActors(movieId).cast.toDomain()
+        return apiInterface.getMovieActors(movieId).cast.toDomain()
     }
 }

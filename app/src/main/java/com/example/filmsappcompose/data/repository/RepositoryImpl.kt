@@ -9,8 +9,9 @@ import com.example.filmsappcompose.domain.model.Movie
 import com.example.filmsappcompose.utiils.Resource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import javax.inject.Inject
 
-class RepositoryImpl(
+class RepositoryImpl @Inject constructor(
     private val remote: MoviesRemoteDataSource,
     private val local: MoviesLocalDataSource
 ) : Repository {

@@ -1,7 +1,6 @@
 package com.example.filmsappcompose.presentation.main_screen
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.filmsappcompose.domain.use_case.GetMoviesUseCase
 import com.example.filmsappcompose.domain.use_case.GetPopularMoviesUseCase
@@ -12,14 +11,14 @@ import com.example.filmsappcompose.utiils.doOnSuccess
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class MainScreenViewModel(
+class MainScreenViewModel @Inject constructor(
     private val getPopularMoviesUseCase: GetPopularMoviesUseCase,
     private val searchMoviesUseCase: SearchMoviesUseCase,
     private val getMoviesUseCase: GetMoviesUseCase,
     private val insertMoviesUseCase: InsertMoviesUseCase,
-    application: Application,
-) : AndroidViewModel(application) {
+) :ViewModel() {
 
     private val _movies = MutableStateFlow<MainScreenState>(MainScreenState.Loading)
     val movie = _movies.asStateFlow()
