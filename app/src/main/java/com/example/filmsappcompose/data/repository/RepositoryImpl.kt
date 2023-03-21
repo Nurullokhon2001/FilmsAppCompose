@@ -1,6 +1,7 @@
 package com.example.filmsappcompose.data.repository
 
-import com.example.filmsappcompose.data.remote.MoviesRemoteDataSource
+import com.example.filmsappcompose.data.local.db.MoviesLocalDataSource
+import com.example.filmsappcompose.data.remote.network.MoviesRemoteDataSource
 import com.example.filmsappcompose.domain.Repository
 import com.example.filmsappcompose.domain.model.Actor
 import com.example.filmsappcompose.domain.model.MovieDetails
@@ -10,12 +11,23 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
 class RepositoryImpl(
-    private val remote: MoviesRemoteDataSource
+    private val remote: MoviesRemoteDataSource,
+    private val local: MoviesLocalDataSource
 ) : Repository {
     override suspend fun getPopularMovies(): Flow<Resource<List<Movie>, Throwable>> {
         return flow {
             emit(remote.getPopularMovies())
         }
+    }
+
+    override suspend fun getMovies(): Flow<Resource<List<Movie>, Throwable>> {
+        return flow {
+            emit(local.getMovies())
+        }
+    }
+
+    override suspend fun insertMovies(movies: List<Movie>) {
+        local.insertMovies(movies)
     }
 
     override suspend fun searchMovies(query: String): Flow<Resource<List<Movie>, Throwable>> {

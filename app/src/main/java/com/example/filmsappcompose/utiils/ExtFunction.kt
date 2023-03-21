@@ -3,7 +3,7 @@ package com.example.filmsappcompose.utiils
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.filmsappcompose.data.dto.MovieDto
+import com.example.filmsappcompose.data.remote.dto.MovieDto
 import com.google.gson.Gson
 import timber.log.Timber
 import java.util.*

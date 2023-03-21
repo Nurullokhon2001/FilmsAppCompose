@@ -21,13 +21,12 @@ class DetailsViewModel(
 
     init {
         viewModelScope.launch {
-            val actors = getMovieActorsUseCase.invoke(movieId)
-
             getMovieDetailsUseCase.invoke(movieId).collect {
                 it.doOnError { error ->
                     _movieDetails.value = DetailsScreenState.Error(error)
                 }
                 it.doOnSuccess { content ->
+                    val actors = getMovieActorsUseCase.invoke(movieId)
                     _movieDetails.value = DetailsScreenState.Content(content.copy(actors = actors))
                 }
             }

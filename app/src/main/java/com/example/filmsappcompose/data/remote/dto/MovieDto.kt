@@ -1,4 +1,4 @@
-package com.example.filmsappcompose.data.dto
+package com.example.filmsappcompose.data.remote.dto
 
 import com.example.filmsappcompose.domain.model.Movie
 import com.google.gson.annotations.SerializedName
@@ -15,7 +15,6 @@ data class MovieDto(
     @SerializedName("overview") val description: String,
     val age: String? = "0",
 )
-
 
 fun MovieDto.toDomain() = Movie(
     id = id,

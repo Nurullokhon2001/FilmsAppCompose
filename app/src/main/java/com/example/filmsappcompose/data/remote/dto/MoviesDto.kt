@@ -1,4 +1,4 @@
-package com.example.filmsappcompose.data.dto
+package com.example.filmsappcompose.data.remote.dto
 
 import kotlinx.serialization.Serializable
 

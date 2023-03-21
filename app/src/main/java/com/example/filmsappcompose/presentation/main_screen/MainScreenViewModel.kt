@@ -3,7 +3,9 @@ package com.example.filmsappcompose.presentation.main_screen
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.filmsappcompose.domain.use_case.GetMoviesUseCase
 import com.example.filmsappcompose.domain.use_case.GetPopularMoviesUseCase
+import com.example.filmsappcompose.domain.use_case.InsertMoviesUseCase
 import com.example.filmsappcompose.domain.use_case.SearchMoviesUseCase
 import com.example.filmsappcompose.utiils.doOnError
 import com.example.filmsappcompose.utiils.doOnSuccess
@@ -14,9 +16,10 @@ import kotlinx.coroutines.launch
 class MainScreenViewModel(
     private val getPopularMoviesUseCase: GetPopularMoviesUseCase,
     private val searchMoviesUseCase: SearchMoviesUseCase,
+    private val getMoviesUseCase: GetMoviesUseCase,
+    private val insertMoviesUseCase: InsertMoviesUseCase,
     application: Application,
-) :
-    AndroidViewModel(application) {
+) : AndroidViewModel(application) {
 
     private val _movies = MutableStateFlow<MainScreenState>(MainScreenState.Loading)
     val movie = _movies.asStateFlow()
@@ -48,12 +51,20 @@ class MainScreenViewModel(
 
     private fun getPopularMovies() {
         viewModelScope.launch {
-            getPopularMoviesUseCase.invoke().collect {
-                it.doOnError { error ->
-                    _movies.emit(MainScreenState.Error(error))
+            getPopularMoviesUseCase.invoke().collect { remote ->
+                remote.doOnError { error ->
+                    getMoviesUseCase.invoke().collect { local ->
+                        local.doOnSuccess { data ->
+                            _movies.emit(MainScreenState.Content(data))
+                            if (data.isEmpty()) {
+                                _movies.emit(MainScreenState.Error(error))
+                            }
+                        }
+                    }
                 }
-                it.doOnSuccess { data ->
+                remote.doOnSuccess { data ->
                     _movies.emit(MainScreenState.Content(data))
+                    insertMoviesUseCase.invoke(data)
                 }
             }
         }

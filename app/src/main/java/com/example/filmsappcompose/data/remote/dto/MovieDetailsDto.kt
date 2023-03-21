@@ -1,4 +1,4 @@
-package com.example.filmsappcompose.data.dto
+package com.example.filmsappcompose.data.remote.dto
 
 import com.example.filmsappcompose.domain.model.MovieDetails
 import com.google.gson.annotations.SerializedName
