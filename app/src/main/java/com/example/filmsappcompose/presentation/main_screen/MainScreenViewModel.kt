@@ -2,10 +2,8 @@ package com.example.filmsappcompose.presentation.main_screen
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.filmsappcompose.domain.use_case.GetMoviesUseCase
-import com.example.filmsappcompose.domain.use_case.GetPopularMoviesUseCase
-import com.example.filmsappcompose.domain.use_case.InsertMoviesUseCase
-import com.example.filmsappcompose.domain.use_case.SearchMoviesUseCase
+import com.example.filmsappcompose.domain.model.Genre
+import com.example.filmsappcompose.domain.use_case.*
 import com.example.filmsappcompose.utiils.doOnError
 import com.example.filmsappcompose.utiils.doOnSuccess
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -18,13 +16,20 @@ class MainScreenViewModel @Inject constructor(
     private val searchMoviesUseCase: SearchMoviesUseCase,
     private val getMoviesUseCase: GetMoviesUseCase,
     private val insertMoviesUseCase: InsertMoviesUseCase,
-) :ViewModel() {
+    private val getGenreUseCase: GetGenreUseCase,
+) : ViewModel() {
 
     private val _movies = MutableStateFlow<MainScreenState>(MainScreenState.Loading)
     val movie = _movies.asStateFlow()
 
+    private val _genre = MutableStateFlow(emptyList<Genre>())
+    val genre = _genre.asStateFlow()
+
     init {
-        getPopularMovies()
+        viewModelScope.launch {
+            _genre.value = getGenreUseCase.invoke()
+            getPopularMovies()
+        }
     }
 
     fun onValueChange(newText: String) {

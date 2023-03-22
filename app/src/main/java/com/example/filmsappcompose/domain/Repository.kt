@@ -1,6 +1,7 @@
 package com.example.filmsappcompose.domain
 
 import com.example.filmsappcompose.domain.model.Actor
+import com.example.filmsappcompose.domain.model.Genre
 import com.example.filmsappcompose.domain.model.Movie
 import com.example.filmsappcompose.domain.model.MovieDetails
 import com.example.filmsappcompose.utiils.Resource
@@ -13,4 +14,5 @@ interface Repository {
     suspend fun searchMovies(query: String): Flow<Resource<List<Movie>, Throwable>>
     suspend fun getMovieDetails(movieId: Int): Flow<Resource<MovieDetails, Throwable>>
     suspend fun getMovieActors(movieId: Int): List<Actor>
+    suspend fun getGenre(): List<Genre>
 }

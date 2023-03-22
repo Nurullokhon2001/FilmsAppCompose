@@ -2,6 +2,7 @@ package com.example.filmsappcompose.data.remote.network
 
 import com.example.filmsappcompose.data.remote.dto.toDomain
 import com.example.filmsappcompose.domain.model.Actor
+import com.example.filmsappcompose.domain.model.Genre
 import com.example.filmsappcompose.domain.model.Movie
 import com.example.filmsappcompose.domain.model.MovieDetails
 import com.example.filmsappcompose.utiils.Resource
@@ -29,5 +30,9 @@ class MoviesRemoteDataSource @Inject constructor(private val apiInterface: ApiIn
 
     suspend fun getMovieActors(movieId: Int): List<Actor> {
         return apiInterface.getMovieActors(movieId).cast.toDomain()
+    }
+
+    suspend fun getGenre(): List<Genre> {
+        return apiInterface.getGenre().toDomain()
     }
 }

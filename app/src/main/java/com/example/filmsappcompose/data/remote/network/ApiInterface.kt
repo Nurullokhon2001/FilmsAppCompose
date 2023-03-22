@@ -1,6 +1,7 @@
 package com.example.filmsappcompose.data.remote.network
 
 import com.example.filmsappcompose.data.remote.dto.ActorsDto
+import com.example.filmsappcompose.data.remote.dto.GenresDto
 import com.example.filmsappcompose.data.remote.dto.MovieDetailsDto
 import com.example.filmsappcompose.data.remote.dto.MoviesDto
 import retrofit2.http.GET
@@ -33,4 +34,9 @@ interface ApiInterface {
         @Path("movie_id") movieId: Int,
         @Query("api_key") api_key: String = API_KEY,
     ): ActorsDto
+
+    @GET("genre/movie/list")
+    suspend fun getGenre(
+        @Query("api_key") apiKey: String = API_KEY
+    ): GenresDto
 }

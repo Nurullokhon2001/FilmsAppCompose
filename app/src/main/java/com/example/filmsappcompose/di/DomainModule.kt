@@ -37,4 +37,9 @@ class DomainModule {
     fun provideSearchMoviesUseCase(repository: Repository): SearchMoviesUseCase {
         return SearchMoviesUseCase(repository)
     }
+
+    @Provides
+    fun provideGetGenreUseCase(repository: Repository): GetGenreUseCase {
+        return GetGenreUseCase(repository)
+    }
 }

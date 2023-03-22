@@ -82,7 +82,7 @@ fun DetailsScreen(
                                             .fillMaxWidth()
                                             .padding(top = 30.dp, start = 20.dp, end = 20.dp),
                                     ) {
-                                        CategoriesItem(category = film.category, onclick = {})
+                                        CategoriesItem(category = film.genre, onclick = {})
                                         Text(
                                             text = film.datePublication,
                                             Modifier
@@ -106,7 +106,7 @@ fun DetailsScreen(
                                                 .padding(bottom = 8.dp, top = 16.dp)
                                                 .align(Alignment.Bottom),
                                         )
-                                        AgeBar(age = film.age, 70f)
+                                        AgeBar(age = film.age, 50f)
                                     }
                                     Box(
                                         modifier = Modifier.padding(
