@@ -44,11 +44,15 @@ class RepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun getMovieActors(movieId: Int): List<Actor> {
-        return remote.getMovieActors(movieId)
+    override suspend fun getMovieActors(movieId: Int): Flow<Resource<List<Actor>, Throwable>> {
+        return flow {
+            emit(remote.getMovieActors(movieId))
+        }
     }
 
-    override suspend fun getGenre(): List<Genre> {
-        return remote.getGenre()
+    override suspend fun getGenre(): Flow<Resource<List<Genre>, Throwable>> {
+        return flow {
+            emit(remote.getGenre())
+        }
     }
 }

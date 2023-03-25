@@ -13,6 +13,6 @@ interface Repository {
     suspend fun insertMovies(movies: List<Movie>)
     suspend fun searchMovies(query: String): Flow<Resource<List<Movie>, Throwable>>
     suspend fun getMovieDetails(movieId: Int): Flow<Resource<MovieDetails, Throwable>>
-    suspend fun getMovieActors(movieId: Int): List<Actor>
-    suspend fun getGenre(): List<Genre>
+    suspend fun getMovieActors(movieId: Int): Flow<Resource<List<Actor>,Throwable>>
+    suspend fun getGenre():Flow<Resource<List<Genre>,Throwable>>
 }

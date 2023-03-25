@@ -28,11 +28,11 @@ class MoviesRemoteDataSource @Inject constructor(private val apiInterface: ApiIn
         }
     }
 
-    suspend fun getMovieActors(movieId: Int): List<Actor> {
-        return apiInterface.getMovieActors(movieId).cast.toDomain()
+    suspend fun getMovieActors(movieId: Int): Resource<List<Actor>, Throwable> {
+        return runOperationCatching { apiInterface.getMovieActors(movieId).cast.toDomain() }
     }
 
-    suspend fun getGenre(): List<Genre> {
-        return apiInterface.getGenre().toDomain()
+    suspend fun getGenre(): Resource<List<Genre>, Throwable> {
+        return runOperationCatching { apiInterface.getGenre().toDomain() }
     }
 }

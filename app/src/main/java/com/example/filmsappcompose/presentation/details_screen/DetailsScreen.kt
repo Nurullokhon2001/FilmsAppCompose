@@ -1,5 +1,6 @@
 package com.example.filmsappcompose.presentation.details_screen
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -20,6 +21,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
+import coil.compose.SubcomposeAsyncImage
 import com.example.filmsappcompose.R
 import com.example.filmsappcompose.domain.model.Actor
 import com.example.filmsappcompose.presentation.ui.main_components.AgeBar
@@ -160,14 +162,24 @@ fun DetailsScreen(
 @Composable
 fun ActorItem(actor: Actor) {
     Column {
-        AsyncImage(
+        SubcomposeAsyncImage(
+            contentScale = ContentScale.FillWidth,
             modifier = Modifier
                 .height(200.dp)
                 .width(150.dp)
                 .clip(RoundedCornerShape(20.dp)),
-            contentScale = ContentScale.Crop,
             model = actor.photo,
-            placeholder = painterResource(R.drawable.test_image),
+            loading = {
+                CircularProgressIndicator()
+            },
+            error = {
+                Image(
+                    painter = painterResource(id = R.drawable.test_image),
+                    contentScale = ContentScale.FillWidth,
+                    modifier = Modifier.fillMaxSize(),
+                    contentDescription = ""
+                )
+            },
             contentDescription = null,
         )
         Text(text = actor.name, fontWeight = FontWeight.Bold, fontSize = 12.sp)
