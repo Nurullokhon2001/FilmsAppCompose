@@ -13,12 +13,7 @@ import dagger.Module
 import dagger.Provides
 
 @Module
-class DataModule(val context: Context) {
-
-    @Provides
-    fun provideContext(): Context {
-        return context
-    }
+class DataModule() {
 
     @Provides
     fun provideDb(context: Context): MoviesDao {
