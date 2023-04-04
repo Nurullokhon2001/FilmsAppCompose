@@ -10,7 +10,7 @@ import com.example.filmsappcompose.utiils.runOperationCatching
 import javax.inject.Inject
 
 class MoviesRemoteDataSource @Inject constructor(private val apiInterface: ApiInterface) {
-    suspend fun getPopularMovies(): Resource<List<Movie>, Throwable> {
+    suspend fun getPopularMoviesNetwork(): Resource<List<Movie>, Throwable> {
         return runOperationCatching {
             apiInterface.getPopularMovies().toDomain()
         }

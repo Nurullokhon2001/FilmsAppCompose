@@ -6,8 +6,8 @@ import com.example.filmsappcompose.utiils.Resource
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-class GetPopularMoviesUseCase @Inject constructor(private val repository: Repository) {
+class GetPopularMoviesNetworkUseCase @Inject constructor(private val repository: Repository) {
     suspend operator fun invoke(): Flow<Resource<List<Movie>, Throwable>> {
-        return repository.getPopularMovies()
+        return repository.getPopularMoviesNetwork()
     }
 }

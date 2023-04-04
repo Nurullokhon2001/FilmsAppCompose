@@ -48,7 +48,7 @@ fun FilmCard(movie: Movie, navController: NavHostController) {
                         .clip(RoundedCornerShape(20.dp)),
                     model = movie.image,
                     loading = {
-                        CircularProgressIndicator()
+                        CircularProgressIndicator(Modifier.fillMaxSize())
                     },
                     error = {
                         Image(

@@ -10,18 +10,20 @@ class PresentationModule {
 
     @Provides
     fun provideMainScreenViewModelFactory(
-        getPopularMoviesUseCase: GetPopularMoviesUseCase,
+        getPopularMoviesNetworkUseCase: GetPopularMoviesNetworkUseCase,
         searchMoviesUseCase: SearchMoviesUseCase,
-        getMoviesUseCase: GetMoviesUseCase,
+        getPopularMoviesLocalUseCase: GetPopularMoviesLocalUseCase,
         insertMoviesUseCase: InsertMoviesUseCase,
-        getGenreUseCase: GetGenreUseCase
+        getGenreUseCase: GetGenreUseCase,
+        filterByGenresUseCase:FilterByGenresUseCase,
     ): MainViewModelFactory {
         return MainViewModelFactory(
-            getPopularMoviesUseCase,
+            getPopularMoviesNetworkUseCase,
             searchMoviesUseCase,
-            getMoviesUseCase,
+            getPopularMoviesLocalUseCase,
             insertMoviesUseCase,
-            getGenreUseCase
+            getGenreUseCase,
+            filterByGenresUseCase
         )
     }
 }

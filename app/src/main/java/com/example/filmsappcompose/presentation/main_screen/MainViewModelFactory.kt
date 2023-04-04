@@ -6,19 +6,21 @@ import com.example.filmsappcompose.domain.use_case.*
 import javax.inject.Inject
 
 class MainViewModelFactory @Inject constructor(
-    private val getPopularMoviesUseCase: GetPopularMoviesUseCase,
+    private val getPopularMoviesNetworkUseCase: GetPopularMoviesNetworkUseCase,
     private val searchMoviesUseCase: SearchMoviesUseCase,
-    private val getMoviesUseCase: GetMoviesUseCase,
+    private val getPopularMoviesLocalUseCase: GetPopularMoviesLocalUseCase,
     private val insertMoviesUseCase: InsertMoviesUseCase,
-    private val getGenreUseCase: GetGenreUseCase
+    private val getGenreUseCase: GetGenreUseCase,
+    private val filterByGenresUseCase: FilterByGenresUseCase,
 ) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return MainScreenViewModel(
-            getPopularMoviesUseCase,
+            getPopularMoviesNetworkUseCase,
             searchMoviesUseCase,
-            getMoviesUseCase,
+            getPopularMoviesLocalUseCase,
             insertMoviesUseCase,
-            getGenreUseCase
+            getGenreUseCase,
+            filterByGenresUseCase
         ) as T
     }
 }

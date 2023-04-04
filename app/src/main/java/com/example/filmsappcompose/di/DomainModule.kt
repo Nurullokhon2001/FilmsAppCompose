@@ -19,13 +19,13 @@ class DomainModule {
     }
 
     @Provides
-    fun provideGetMoviesUseCase(repository: Repository): GetMoviesUseCase {
-        return GetMoviesUseCase(repository)
+    fun provideGetMoviesUseCase(repository: Repository): GetPopularMoviesLocalUseCase {
+        return GetPopularMoviesLocalUseCase(repository)
     }
 
     @Provides
-    fun provideGetPopularMoviesUseCase(repository: Repository): GetPopularMoviesUseCase {
-        return GetPopularMoviesUseCase(repository)
+    fun provideGetPopularMoviesUseCase(repository: Repository): GetPopularMoviesNetworkUseCase {
+        return GetPopularMoviesNetworkUseCase(repository)
     }
 
     @Provides
@@ -41,5 +41,10 @@ class DomainModule {
     @Provides
     fun provideGetGenreUseCase(repository: Repository): GetGenreUseCase {
         return GetGenreUseCase(repository)
+    }
+
+    @Provides
+    fun provideFilterByGenresUseCase(): FilterByGenresUseCase {
+        return FilterByGenresUseCase()
     }
 }

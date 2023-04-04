@@ -9,7 +9,7 @@ import com.example.filmsappcompose.utiils.runOperationCatching
 import javax.inject.Inject
 
 class MoviesLocalDataSource @Inject constructor(private val moviesDao: MoviesDao) {
-    suspend fun getMovies(): Resource<List<Movie>, Throwable> {
+    suspend fun getPopularMoviesLocal(): Resource<List<Movie>, Throwable> {
         return runOperationCatching {
             moviesDao.getMovies().map { it.toDomain() }
         }

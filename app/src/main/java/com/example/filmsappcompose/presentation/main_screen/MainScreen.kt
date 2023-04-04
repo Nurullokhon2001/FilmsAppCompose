@@ -84,6 +84,7 @@ fun MainScreen(navController: NavHostController, mainScreenViewModel: MainScreen
                     items(mainScreenViewModel.genre.value) {
                         CategoriesItem(category = it, onclick = { genre ->
                             category.value = genre.name
+                            mainScreenViewModel.filterByGenre(genre.id)
                         })
                     }
                 }

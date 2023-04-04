@@ -16,15 +16,15 @@ class RepositoryImpl @Inject constructor(
     private val remote: MoviesRemoteDataSource,
     private val local: MoviesLocalDataSource
 ) : Repository {
-    override suspend fun getPopularMovies(): Flow<Resource<List<Movie>, Throwable>> {
+    override suspend fun getPopularMoviesNetwork(): Flow<Resource<List<Movie>, Throwable>> {
         return flow {
-            emit(remote.getPopularMovies())
+            emit(remote.getPopularMoviesNetwork())
         }
     }
 
-    override suspend fun getMovies(): Flow<Resource<List<Movie>, Throwable>> {
+    override suspend fun getPopularMoviesLocal(): Flow<Resource<List<Movie>, Throwable>> {
         return flow {
-            emit(local.getMovies())
+            emit(local.getPopularMoviesLocal())
         }
     }
 

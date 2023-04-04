@@ -13,6 +13,7 @@ data class MovieDto(
     @SerializedName("poster_path") val image: String,
     @SerializedName("vote_average") val rating: Float,
     @SerializedName("overview") val description: String,
+    @SerializedName("genre_ids") val genres: List<Int>,
     val age: String? = "0",
 )
 
@@ -21,6 +22,7 @@ fun MovieDto.toDomain() = Movie(
     name = name,
     image = BASE_URL_IMAGE + image,
     rating = rating.div(2),
+    genres = genres,
     description = description,
     age = age ?: "0"
 )
