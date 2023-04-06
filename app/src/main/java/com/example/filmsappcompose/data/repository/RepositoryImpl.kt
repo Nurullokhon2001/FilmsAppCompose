@@ -4,25 +4,27 @@ import com.example.filmsappcompose.data.local.db.MoviesLocalDataSource
 import com.example.filmsappcompose.data.remote.network.MoviesRemoteDataSource
 import com.example.filmsappcompose.domain.Repository
 import com.example.filmsappcompose.domain.model.Actor
-import com.example.filmsappcompose.domain.model.MovieDetails
+import com.example.filmsappcompose.domain.model.Genre
 import com.example.filmsappcompose.domain.model.Movie
+import com.example.filmsappcompose.domain.model.MovieDetails
 import com.example.filmsappcompose.utiils.Resource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import javax.inject.Inject
 
-class RepositoryImpl(
+class RepositoryImpl @Inject constructor(
     private val remote: MoviesRemoteDataSource,
     private val local: MoviesLocalDataSource
 ) : Repository {
-    override suspend fun getPopularMovies(): Flow<Resource<List<Movie>, Throwable>> {
+    override suspend fun getPopularMoviesNetwork(): Flow<Resource<List<Movie>, Throwable>> {
         return flow {
-            emit(remote.getPopularMovies())
+            emit(remote.getPopularMoviesNetwork())
         }
     }
 
-    override suspend fun getMovies(): Flow<Resource<List<Movie>, Throwable>> {
+    override suspend fun getPopularMoviesLocal(): Flow<Resource<List<Movie>, Throwable>> {
         return flow {
-            emit(local.getMovies())
+            emit(local.getPopularMoviesLocal())
         }
     }
 
@@ -42,7 +44,15 @@ class RepositoryImpl(
         }
     }
 
-    override suspend fun getMovieActors(movieId: Int): List<Actor> {
-        return remote.getMovieActors(movieId)
+    override suspend fun getMovieActors(movieId: Int): Flow<Resource<List<Actor>, Throwable>> {
+        return flow {
+            emit(remote.getMovieActors(movieId))
+        }
+    }
+
+    override suspend fun getGenre(): Flow<Resource<List<Genre>, Throwable>> {
+        return flow {
+            emit(remote.getGenre())
+        }
     }
 }

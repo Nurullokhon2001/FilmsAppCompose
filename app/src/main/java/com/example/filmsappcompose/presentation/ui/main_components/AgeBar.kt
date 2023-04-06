@@ -12,7 +12,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun AgeBar(age: String, radius: Float = 30f) {
+fun AgeBar(age: String, radius: Float = 25f) {
     Text(
         text = age,
         fontSize = 8.sp,

@@ -1,5 +1,6 @@
 package com.example.filmsappcompose.data.remote.dto
 
+import com.example.filmsappcompose.domain.model.Genre
 import com.example.filmsappcompose.domain.model.MovieDetails
 import com.google.gson.annotations.SerializedName
 import kotlinx.serialization.Serializable
@@ -13,8 +14,8 @@ data class MovieDetailsDto(
     @SerializedName("release_date") val date_publication: String,
     @SerializedName("vote_average") val rating: Float,
     @SerializedName("overview") val description: String,
+    @SerializedName("genres") val genre: List<GenreDto>,
     val age: String?,
-    val category: String?,
     val actors: List<ActorDto>?
 )
 
@@ -25,6 +26,10 @@ fun MovieDetailsDto.toDomain() = MovieDetails(
     rating = rating.div(2),
     description = description,
     age = age ?: "0",
-    category = category ?: "Category",
+    genre = if (genre.isEmpty()) {
+        Genre(0, "Genre")
+    } else {
+        genre[0].toDomain()
+    },
     actors = (actors?.toDomain() ?: emptyList())
 )

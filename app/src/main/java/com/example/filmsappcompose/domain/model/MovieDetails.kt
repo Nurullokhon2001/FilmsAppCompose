@@ -10,6 +10,6 @@ data class MovieDetails(
     val rating: Float?,
     val description: String,
     val age: String = "0",
-    val category: String = "",
+    val genre: Genre,
     val actors: List<Actor>
 )

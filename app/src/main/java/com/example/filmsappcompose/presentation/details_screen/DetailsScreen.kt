@@ -1,5 +1,6 @@
 package com.example.filmsappcompose.presentation.details_screen
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -20,6 +21,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
+import coil.compose.SubcomposeAsyncImage
 import com.example.filmsappcompose.R
 import com.example.filmsappcompose.domain.model.Actor
 import com.example.filmsappcompose.presentation.ui.main_components.AgeBar
@@ -82,7 +84,7 @@ fun DetailsScreen(
                                             .fillMaxWidth()
                                             .padding(top = 30.dp, start = 20.dp, end = 20.dp),
                                     ) {
-                                        CategoriesItem(category = film.category, onclick = {})
+                                        CategoriesItem(category = film.genre, onclick = {})
                                         Text(
                                             text = film.datePublication,
                                             Modifier
@@ -106,7 +108,7 @@ fun DetailsScreen(
                                                 .padding(bottom = 8.dp, top = 16.dp)
                                                 .align(Alignment.Bottom),
                                         )
-                                        AgeBar(age = film.age, 70f)
+                                        AgeBar(age = film.age, 50f)
                                     }
                                     Box(
                                         modifier = Modifier.padding(
@@ -159,15 +161,25 @@ fun DetailsScreen(
 
 @Composable
 fun ActorItem(actor: Actor) {
-    Column() {
-        AsyncImage(
+    Column {
+        SubcomposeAsyncImage(
+            contentScale = ContentScale.FillWidth,
             modifier = Modifier
                 .height(200.dp)
                 .width(150.dp)
                 .clip(RoundedCornerShape(20.dp)),
-            contentScale = ContentScale.Crop,
             model = actor.photo,
-            placeholder = painterResource(R.drawable.test_image),
+            loading = {
+                CircularProgressIndicator()
+            },
+            error = {
+                Image(
+                    painter = painterResource(id = R.drawable.test_image),
+                    contentScale = ContentScale.FillWidth,
+                    modifier = Modifier.fillMaxSize(),
+                    contentDescription = ""
+                )
+            },
             contentDescription = null,
         )
         Text(text = actor.name, fontWeight = FontWeight.Bold, fontSize = 12.sp)

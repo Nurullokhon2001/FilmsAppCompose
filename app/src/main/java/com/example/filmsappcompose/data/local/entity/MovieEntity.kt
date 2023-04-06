@@ -23,7 +23,8 @@ fun MovieEntity.toDomain() = Movie(
     image = BASE_URL_IMAGE + image,
     rating = rating.div(2),
     description = description,
-    age = age
+    age = age,
+    genres = emptyList()
 )
 
 fun Movie.toData() = MovieEntity(

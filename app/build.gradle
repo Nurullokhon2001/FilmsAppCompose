@@ -79,6 +79,9 @@ dependencies {
 
     implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:$serialization_version"
     implementation "com.jakewharton.timber:timber:$timber_version"
+
+    implementation "com.google.dagger:dagger:$dagger_version"
+    kapt "com.google.dagger:dagger-compiler:$dagger_version"
 }
 
 kapt {

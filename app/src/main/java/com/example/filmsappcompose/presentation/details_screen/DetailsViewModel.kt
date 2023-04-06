@@ -2,18 +2,21 @@ package com.example.filmsappcompose.presentation.details_screen
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.filmsappcompose.domain.model.Actor
 import com.example.filmsappcompose.domain.use_case.GetMovieActorsUseCase
 import com.example.filmsappcompose.domain.use_case.GetMovieDetailsUseCase
 import com.example.filmsappcompose.utiils.doOnError
 import com.example.filmsappcompose.utiils.doOnSuccess
+import dagger.assisted.Assisted
+import dagger.assisted.AssistedInject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
-class DetailsViewModel(
+class DetailsViewModel @AssistedInject constructor(
     private val getMovieDetailsUseCase: GetMovieDetailsUseCase,
     private val getMovieActorsUseCase: GetMovieActorsUseCase,
-    movieId: Int
+    @Assisted private val movieId: Int
 ) : ViewModel() {
 
     private val _movieDetails = MutableStateFlow<DetailsScreenState>(DetailsScreenState.Loading)
@@ -26,7 +29,12 @@ class DetailsViewModel(
                     _movieDetails.value = DetailsScreenState.Error(error)
                 }
                 it.doOnSuccess { content ->
-                    val actors = getMovieActorsUseCase.invoke(movieId)
+                    var actors: List<Actor> = emptyList()
+                    getMovieActorsUseCase.invoke(movieId).collect { credits->
+                        credits.doOnSuccess {content->
+                            actors = content
+                        }
+                    }
                     _movieDetails.value = DetailsScreenState.Content(content.copy(actors = actors))
                 }
             }

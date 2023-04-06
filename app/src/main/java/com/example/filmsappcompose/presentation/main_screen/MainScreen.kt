@@ -2,9 +2,11 @@ package com.example.filmsappcompose.presentation.main_screen
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
@@ -22,6 +24,7 @@ import androidx.navigation.NavHostController
 import com.example.filmsappcompose.domain.model.Movie
 import com.example.filmsappcompose.presentation.main_screen.components.FilmCard
 import com.example.filmsappcompose.presentation.main_screen.components.SearchBar
+import com.example.filmsappcompose.presentation.ui.main_components.CategoriesItem
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -72,19 +75,19 @@ fun MainScreen(navController: NavHostController, mainScreenViewModel: MainScreen
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Bold,
                 )
-//        LazyRow(
-//            contentPadding = PaddingValues(
-//                horizontal = 20.dp, vertical = 18.dp
-//            ),
-//            horizontalArrangement = Arrangement.spacedBy(16.dp),
-//        ) {
-//            items(mainScreenViewModel.categories.value) {
-//                CategoriesItem(category = it, onclick = {
-//                    category.value = it
-//                    mainScreenViewModel.onValueChange(templateSearchValue.value)
-//                })
-//            }
-//        }
+                LazyRow(
+                    contentPadding = PaddingValues(
+                        horizontal = 20.dp, vertical = 18.dp
+                    ),
+                    horizontalArrangement = Arrangement.spacedBy(16.dp),
+                ) {
+                    items(mainScreenViewModel.genre.value) {
+                        CategoriesItem(category = it, onclick = { genre ->
+                            category.value = genre.name
+                            mainScreenViewModel.filterByGenre(genre.id)
+                        })
+                    }
+                }
                 Box(modifier = Modifier.fillMaxSize()) {
                     when (films.value) {
                         is MainScreenState.Loading -> {
