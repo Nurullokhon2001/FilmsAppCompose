@@ -1,5 +1,6 @@
 package com.example.filmsappcompose.data.remote.dto
 
+import com.example.filmsappcompose.data.local.entity.MovieEntity
 import com.example.filmsappcompose.domain.model.Movie
 import com.google.gson.annotations.SerializedName
 import kotlinx.serialization.Serializable
@@ -23,6 +24,15 @@ fun MovieDto.toDomain() = Movie(
     image = BASE_URL_IMAGE + image,
     rating = rating.div(2),
     genres = genres,
+    description = description,
+    age = age ?: "0"
+)
+
+fun MovieDto.toEntity() = MovieEntity(
+    id = id,
+    name = name,
+    image = BASE_URL_IMAGE + image,
+    rating = rating.div(2),
     description = description,
     age = age ?: "0"
 )

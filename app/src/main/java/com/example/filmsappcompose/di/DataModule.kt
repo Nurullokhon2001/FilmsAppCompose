@@ -13,7 +13,7 @@ import dagger.Module
 import dagger.Provides
 
 @Module
-class DataModule() {
+class DataModule {
 
     @Provides
     fun provideDb(context: Context): MoviesDao {
@@ -26,8 +26,11 @@ class DataModule() {
     }
 
     @Provides
-    fun provideMoviesLocalDataSource(moviesDao: MoviesDao): MoviesLocalDataSource {
-        return MoviesLocalDataSource(moviesDao)
+    fun provideMoviesLocalDataSource(
+        moviesDao: MoviesDao,
+        apiInterface: ApiInterface
+    ): MoviesLocalDataSource {
+        return MoviesLocalDataSource(moviesDao, apiInterface)
     }
 
     @Provides

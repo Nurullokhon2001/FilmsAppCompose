@@ -12,13 +12,13 @@ import javax.inject.Inject
 class MoviesRemoteDataSource @Inject constructor(private val apiInterface: ApiInterface) {
     suspend fun getPopularMoviesNetwork(): Resource<List<Movie>, Throwable> {
         return runOperationCatching {
-            apiInterface.getPopularMovies().toDomain()
+            apiInterface.getPopularMovies(page = 1).toDomain()
         }
     }
 
     suspend fun searchMovies(query: String): Resource<List<Movie>, Throwable> {
         return runOperationCatching {
-            apiInterface.searchMovies(query = query).toDomain()
+            apiInterface.searchMovies(query = query, page = 1).toDomain()
         }
     }
 

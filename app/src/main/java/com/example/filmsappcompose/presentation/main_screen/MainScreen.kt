@@ -2,6 +2,7 @@ package com.example.filmsappcompose.presentation.main_screen
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -21,12 +22,18 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import androidx.paging.LoadState
+import androidx.paging.compose.LazyPagingItems
+import androidx.paging.compose.collectAsLazyPagingItems
+import androidx.paging.compose.itemContentType
+import androidx.paging.compose.itemKey
 import com.example.filmsappcompose.domain.model.Movie
 import com.example.filmsappcompose.presentation.main_screen.components.FilmCard
 import com.example.filmsappcompose.presentation.main_screen.components.SearchBar
 import com.example.filmsappcompose.presentation.ui.main_components.CategoriesItem
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 @SuppressLint("StateFlowValueCalledInComposition")
 @OptIn(ExperimentalMaterialApi::class)
@@ -84,7 +91,7 @@ fun MainScreen(navController: NavHostController, mainScreenViewModel: MainScreen
                     items(mainScreenViewModel.genre.value) {
                         CategoriesItem(category = it, onclick = { genre ->
                             category.value = genre.name
-                            mainScreenViewModel.filterByGenre(genre.id)
+                            //   mainScreenViewModel.filterByGenre(genre.id)
                         })
                     }
                 }
@@ -97,6 +104,7 @@ fun MainScreen(navController: NavHostController, mainScreenViewModel: MainScreen
                                     .align(Alignment.Center)
                             )
                         }
+
                         is MainScreenState.Error -> {
                             Text(
                                 text = (films.value as MainScreenState.Error).error.message.toString(),
@@ -108,8 +116,12 @@ fun MainScreen(navController: NavHostController, mainScreenViewModel: MainScreen
                                     )
                             )
                         }
+
                         is MainScreenState.Content -> {
-                            GetFilms(navController, (films.value as MainScreenState.Content).data)
+                            GetFilmsPaging(
+                                navController,
+                                (films.value as MainScreenState.Content).data.collectAsLazyPagingItems()
+                            )
                         }
                     }
                 }
@@ -126,6 +138,33 @@ fun GetFilms(navController: NavHostController, movies: List<Movie>) {
     ) {
         items(movies) { movie ->
             FilmCard(movie = movie, navController)
+        }
+    }
+}
+
+@Composable
+fun GetFilmsPaging(navController: NavHostController, movies: LazyPagingItems<Movie>) {
+    LazyColumn {
+        items(
+            count = movies.itemCount,
+            key = movies.itemKey(),
+            contentType = movies.itemContentType(
+            )
+        ) { index ->
+            val item = movies[index]
+            if (item != null) {
+                FilmCard(movie = item, navController)
+            }
+        }
+        item {
+            if (movies.loadState.append is LoadState.Loading) {
+                CircularProgressIndicator()
+            }
+        }
+        item {
+            if (movies.loadState.append is LoadState.Error) {
+                Timber.tag("error").e("Paging Error State")
+            }
         }
     }
 }

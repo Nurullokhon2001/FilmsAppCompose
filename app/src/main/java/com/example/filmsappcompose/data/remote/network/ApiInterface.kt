@@ -15,12 +15,14 @@ interface ApiInterface {
     @GET("movie/popular")
     suspend fun getPopularMovies(
         @Query("api_key") apiKey: String = API_KEY,
+        @Query("page") page: Int,
     ): MoviesDto
 
     @GET("search/movie")
     suspend fun searchMovies(
         @Query("api_key") apiKey: String = API_KEY,
         @Query("query") query: String,
+        @Query("page") page: Int,
     ): MoviesDto
 
     @GET("movie/{movie_id}")
