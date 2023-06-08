@@ -4,9 +4,9 @@ import androidx.paging.ExperimentalPagingApi
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
+import androidx.paging.map
 import com.example.filmsappcompose.data.MoviesRemoteMediator
 import com.example.filmsappcompose.data.local.dao.MoviesDao
-import com.example.filmsappcompose.data.local.entity.MovieEntity
 import com.example.filmsappcompose.data.local.entity.toData
 import com.example.filmsappcompose.data.local.entity.toDomain
 import com.example.filmsappcompose.data.remote.network.ApiInterface
@@ -14,6 +14,7 @@ import com.example.filmsappcompose.domain.model.Movie
 import com.example.filmsappcompose.utiils.Resource
 import com.example.filmsappcompose.utiils.runOperationCatching
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 class MoviesLocalDataSource @Inject constructor(
@@ -22,7 +23,7 @@ class MoviesLocalDataSource @Inject constructor(
 ) {
 
     @OptIn(ExperimentalPagingApi::class)
-    fun getPopularMoviesPaging(query: String): Resource<Flow<PagingData<MovieEntity>>, Throwable> {
+    fun getPopularMoviesPaging(query: String): Resource<Flow<PagingData<Movie>>, Throwable> {
         val pagingSourceFactory = { moviesDao.getMoviesPaging() }
         val paging = Pager(
             config = PagingConfig(
@@ -30,11 +31,13 @@ class MoviesLocalDataSource @Inject constructor(
             ),
             pagingSourceFactory = pagingSourceFactory,
             remoteMediator = MoviesRemoteMediator(
-                query = query,
-                dbDao = moviesDao,
-                apiService = apiInterface
+                query = query, dbDao = moviesDao, apiService = apiInterface
             ),
-        ).flow
+        ).flow.map { pagingData ->
+            pagingData.map { movieEntity ->
+                movieEntity.toDomain()
+            }
+        }
         return runOperationCatching { paging }
     }
 

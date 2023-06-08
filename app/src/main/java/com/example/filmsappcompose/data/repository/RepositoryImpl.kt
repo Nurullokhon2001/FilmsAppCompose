@@ -2,7 +2,6 @@ package com.example.filmsappcompose.data.repository
 
 import androidx.paging.PagingData
 import com.example.filmsappcompose.data.local.db.MoviesLocalDataSource
-import com.example.filmsappcompose.data.local.entity.MovieEntity
 import com.example.filmsappcompose.data.remote.network.MoviesRemoteDataSource
 import com.example.filmsappcompose.domain.Repository
 import com.example.filmsappcompose.domain.model.Actor
@@ -19,7 +18,7 @@ class RepositoryImpl @Inject constructor(
     private val local: MoviesLocalDataSource
 ) : Repository {
 
-    override suspend fun getPopularMoviesPaging(query: String): Flow<Resource<Flow<PagingData<MovieEntity>>, Throwable>> {
+    override suspend fun getPopularMoviesPaging(query: String): Flow<Resource<Flow<PagingData<Movie>>, Throwable>> {
         return flow {
             emit(local.getPopularMoviesPaging(query))
         }

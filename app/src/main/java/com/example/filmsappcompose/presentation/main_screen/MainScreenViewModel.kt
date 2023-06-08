@@ -2,15 +2,12 @@ package com.example.filmsappcompose.presentation.main_screen
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.paging.map
-import com.example.filmsappcompose.data.local.entity.toDomain
 import com.example.filmsappcompose.domain.model.Genre
 import com.example.filmsappcompose.domain.use_case.*
 import com.example.filmsappcompose.utiils.doOnError
 import com.example.filmsappcompose.utiils.doOnSuccess
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -54,12 +51,8 @@ class MainScreenViewModel @Inject constructor(
     private fun getPopularMovies(query: String = "") {
         viewModelScope.launch {
             getPopularMoviesPaging.invoke(query).collect {
-                it.doOnSuccess { resourseData ->
-                    _movies.emit(MainScreenState.Content(resourseData.map {pagingData->
-                        pagingData.map {
-                            it.toDomain()
-                        }
-                    }))
+                it.doOnSuccess { resourceData ->
+                    _movies.emit(MainScreenState.Content(resourceData))
                 }
             }
         }
