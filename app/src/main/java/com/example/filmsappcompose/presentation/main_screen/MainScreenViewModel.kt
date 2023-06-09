@@ -2,6 +2,7 @@ package com.example.filmsappcompose.presentation.main_screen
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.paging.cachedIn
 import com.example.filmsappcompose.domain.model.Genre
 import com.example.filmsappcompose.domain.use_case.*
 import com.example.filmsappcompose.utiils.doOnError
@@ -62,7 +63,7 @@ class MainScreenViewModel @Inject constructor(
         viewModelScope.launch {
             getPopularMoviesPaging.invoke(query).collect {
                 it.doOnSuccess { resourceData ->
-                    _movies.emit(MainScreenState.Content(resourceData))
+                    _movies.emit(MainScreenState.Content(resourceData.cachedIn(viewModelScope)))
                 }
             }
         }
