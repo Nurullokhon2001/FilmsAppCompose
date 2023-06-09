@@ -86,9 +86,8 @@ class MoviesRemoteMediator @Inject constructor(
 
     private suspend fun getRemoteKeyForLastItem(state: PagingState<Int, MovieEntity>): RemoteKeysEntity? {
         return state.pages.lastOrNull { it.data.isNotEmpty() }?.data?.lastOrNull()
-            ?.let { repo ->
-                remoteKeysDao.remoteKeysRepoId(repo.id.toLong())
-
+            ?.let {
+                remoteKeysDao.remoteKey()
             }
     }
 

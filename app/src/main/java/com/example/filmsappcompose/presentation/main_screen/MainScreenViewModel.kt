@@ -45,6 +45,16 @@ class MainScreenViewModel @Inject constructor(
     }
 
     fun leadingIconClicked() {
+        viewModelScope.launch {
+            getGenreUseCase.invoke().collect {
+                it.doOnSuccess { genres ->
+                    _genre.value = genres
+                }
+                it.doOnError {
+                    _genre.value = emptyList()
+                }
+            }
+        }
         getPopularMovies()
     }
 
