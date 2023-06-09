@@ -7,6 +7,7 @@ import androidx.paging.PagingData
 import androidx.paging.map
 import com.example.filmsappcompose.data.MoviesRemoteMediator
 import com.example.filmsappcompose.data.local.dao.MoviesDao
+import com.example.filmsappcompose.data.local.dao.RemoteKeysDao
 import com.example.filmsappcompose.data.local.entity.toData
 import com.example.filmsappcompose.data.local.entity.toDomain
 import com.example.filmsappcompose.data.remote.network.ApiInterface
@@ -19,6 +20,7 @@ import javax.inject.Inject
 
 class MoviesLocalDataSource @Inject constructor(
     private val moviesDao: MoviesDao,
+    private val remoteKeysDao: RemoteKeysDao,
     private val apiInterface: ApiInterface,
 ) {
 
@@ -31,7 +33,10 @@ class MoviesLocalDataSource @Inject constructor(
             ),
             pagingSourceFactory = pagingSourceFactory,
             remoteMediator = MoviesRemoteMediator(
-                query = query, dbDao = moviesDao, apiService = apiInterface
+                query = query,
+                dbDao = moviesDao,
+                remoteKeysDao = remoteKeysDao,
+                apiService = apiInterface
             ),
         ).flow.map { pagingData ->
             pagingData.map { movieEntity ->

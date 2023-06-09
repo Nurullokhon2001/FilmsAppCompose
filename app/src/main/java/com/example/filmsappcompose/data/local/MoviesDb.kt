@@ -5,11 +5,14 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.filmsappcompose.data.local.dao.MoviesDao
+import com.example.filmsappcompose.data.local.dao.RemoteKeysDao
 import com.example.filmsappcompose.data.local.entity.MovieEntity
+import com.example.filmsappcompose.data.local.entity.RemoteKeysEntity
 
-@Database(entities = [MovieEntity::class], version = 1, exportSchema = false)
-abstract class MoviesDb() : RoomDatabase() {
+@Database(entities = [MovieEntity::class,RemoteKeysEntity::class], version = 1, exportSchema = false)
+abstract class MoviesDb : RoomDatabase() {
     abstract fun moviesDao(): MoviesDao
+    abstract fun remoteKeysDao(): RemoteKeysDao
 
     companion object {
         @Volatile
