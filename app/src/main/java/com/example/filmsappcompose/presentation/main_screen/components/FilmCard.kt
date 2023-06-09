@@ -45,11 +45,12 @@ fun FilmCard(movie: Movie, navController: NavHostController) {
                     contentScale = ContentScale.FillWidth,
                     modifier = Modifier
                         .fillMaxWidth()
+                        .height(220.dp)
                         .clip(RoundedCornerShape(20.dp)),
                     model = movie.image,
                     loading = {
                         Box(
-                            modifier = Modifier.fillMaxSize(),
+                            modifier = Modifier.height(220.dp),
                             contentAlignment = Alignment.Center
                         ) {
                             CircularProgressIndicator()
@@ -59,7 +60,7 @@ fun FilmCard(movie: Movie, navController: NavHostController) {
                         Image(
                             painter = painterResource(id = R.drawable.test_image),
                             contentScale = ContentScale.FillWidth,
-                            modifier = Modifier.fillMaxSize(),
+                            modifier = Modifier.height(220.dp),
                             contentDescription = ""
                         )
                     },
@@ -74,6 +75,7 @@ fun FilmCard(movie: Movie, navController: NavHostController) {
                     overflow = TextOverflow.Ellipsis
                 )
                 Text(
+                    modifier = Modifier.height(100.dp),
                     text = movie.description,
                     color = Color.Black,
                     maxLines = 5,

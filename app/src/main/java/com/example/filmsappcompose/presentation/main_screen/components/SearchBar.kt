@@ -1,5 +1,6 @@
 package com.example.filmsappcompose.presentation.main_screen.components
 
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -29,9 +30,10 @@ fun SearchBar(onValueChange: (String) -> Unit, leadingIconClicked: () -> Unit) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .height(65.dp)
+            .height(65.dp),
+        contentAlignment = Alignment.CenterEnd
     ) {
-        if (isSearchVisible.value) {
+        AnimatedVisibility (isSearchVisible.value) {
             OutlinedTextField(
                 value = message.value,
                 maxLines = 1,
@@ -66,18 +68,19 @@ fun SearchBar(onValueChange: (String) -> Unit, leadingIconClicked: () -> Unit) {
                 },
                 label = { Text(text = "Enter text to search") },
             )
-        } else {
-            Image(
-                imageVector = Icons.Default.Search,
-                modifier = Modifier
-                    .padding(horizontal = 20.dp)
-                    .size(30.dp)
-                    .align(Alignment.CenterEnd)
-                    .clickable {
-                        isSearchVisible.value = true
-                    },
-                contentDescription = null,
-            )
+        }
+        if(!isSearchVisible.value) {
+                Image(
+                    imageVector = Icons.Default.Search,
+                    modifier = Modifier
+                        .padding(horizontal = 20.dp)
+                        .size(30.dp)
+                        .align(Alignment.CenterEnd)
+                        .clickable {
+                            isSearchVisible.value = true
+                        },
+                    contentDescription = null,
+                )
         }
     }
 }

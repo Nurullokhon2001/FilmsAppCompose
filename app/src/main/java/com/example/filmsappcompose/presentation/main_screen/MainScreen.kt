@@ -2,11 +2,9 @@ package com.example.filmsappcompose.presentation.main_screen
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -71,9 +69,9 @@ fun MainScreen(navController: NavHostController, mainScreenViewModel: MainScreen
                         templateSearchValue.value = it
                         mainScreenViewModel.onValueChange(templateSearchValue.value)
                     }, leadingIconClicked = {
-                        mainScreenViewModel.leadingIconClicked()
                         templateSearchValue.value = ""
                         category.value = "Popular now"
+                        mainScreenViewModel.leadingIconClicked()
                     })
                 }
                 Text(
@@ -132,19 +130,10 @@ fun MainScreen(navController: NavHostController, mainScreenViewModel: MainScreen
 }
 
 @Composable
-fun GetFilms(navController: NavHostController, movies: List<Movie>) {
+fun GetFilmsPaging(navController: NavHostController, movies: LazyPagingItems<Movie>) {
     LazyVerticalGrid(
         columns = GridCells.Fixed(2), modifier = Modifier.fillMaxSize()
     ) {
-        items(movies) { movie ->
-            FilmCard(movie = movie, navController)
-        }
-    }
-}
-
-@Composable
-fun GetFilmsPaging(navController: NavHostController, movies: LazyPagingItems<Movie>) {
-    LazyColumn {
         items(
             count = movies.itemCount,
             key = movies.itemKey(),
