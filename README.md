@@ -1,8 +1,8 @@
-<h1>MovieSearchApp</h1>
+<h1>FilmsAppCompose</h1>
 
 <img src="https://yourimageurl.com" alt="MovieSearchApp">
 
-<p><strong>MovieSearchApp</strong> is an Android application that allows users to search and view movies using the TMDB API. It is built with a modern tech stack, including Kotlin, Dagger 2, Clean Architecture, Jetpack Compose, Paging 3, and Room.</p>
+<p><strong>FilmsAppCompose</strong> is an Android application that allows users to search and view movies using the TMDB API. It is built with a modern tech stack, including Kotlin, Dagger 2, Clean Architecture, Jetpack Compose, Paging 3, and Room.</p>
 
 <h2>Features</h2>
 
@@ -29,6 +29,8 @@
   <li>Jetpack Compose: A modern UI toolkit for building native Android UIs declaratively.</li>
   <li>Paging 3: A component for handling large data sets and efficiently loading data in chunks.</li>
   <li>Room: A persistence library for storing and retrieving data offline.</li>
+  <li>Retrofit : For getting data from the network.</li>
+  <li>HttpLoggingInterceptor : Logging of all requests.</li>
 </ul>
 
 <h2>Getting Started</h2>
@@ -36,7 +38,7 @@
 <p>To get started with the MovieSearchApp project, follow these steps:</p>
 
 <ol>
-  <li>Clone the repository: <code>git clone https://github.com/your-username/MovieSearchApp.git</code></li>
+  <li>Clone the repository: <code>git clone https://github.com/Nurullokhon2001/FilmsAppCompose.git</code></li>
   <li>Open the project in Android Studio.</li>
   <li>Build and run the app on an emulator or physical device.</li>
 </ol>
@@ -55,12 +57,7 @@
 
 <p>Contributions are welcome! If you have any ideas, suggestions, or bug reports, please open an issue or submit a pull request. For major changes, please open an issue first to discuss the changes.</p>
 
-<h2>License</h2>
-
-<p>This project is licensed under the <a href="https://opensource.org/licenses/MIT">MIT License</a>.</p>
-
 <h2>Acknowledgements</h2>
 
 <ul>
   <li>This app utilizes the TMDB API for fetching movie data. (<a href="https://www.themoviedb.org/">https://www.themoviedb.org/</a>)</li>
-  <li>Some icons used in this app are provided by <a href="https://fontawesome.com/">FontAwesome</a>
